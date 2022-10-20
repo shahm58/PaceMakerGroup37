@@ -19,9 +19,16 @@ class Login(QDialog):
     def __init__(self):
         super(Login,self). __init__()
         loadUi("login.ui",self)
-        self.loginbutton.clicked.connect(self.loginfunction)
+        #if login button is clicked and the username and password are verified, then proceed to dash board. 
+        #if the information is not verified, do not proceed to login.
+        
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.loginbutton.clicked.connect(self.loginfunction)
+        self.loginbutton.clicked.connect(self.gotodash)
+
+
         self.createaccbutton.clicked.connect(self.gotocreate)
+        
 
 
     def loginfunction(self):
@@ -30,11 +37,16 @@ class Login(QDialog):
         print("Successfully logged in with username: ", username, "and password:", password)
 
 
+
     def gotocreate(self):
         createacc = CreateAcc()
         widget.addWidget(createacc)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
+    def gotodash(self):
+        dashboard = Dash()
+        widget.addWidget(dashboard)
+        widget.setCurrentIndex(widget.currentIndex()+1)        
 
 class CreateAcc(QDialog):
     def __init__(self):
@@ -62,7 +74,10 @@ class CreateAcc(QDialog):
         widget.addWidget(login)
         widget.setCurrentIndex(widget.currentIndex()+1)  
 
-
+class Dash(QDialog):
+    def __init__(self):
+        super(Dash, self).__init__()
+        loadUi("dashboard.ui", self)
 
 
 
@@ -70,8 +85,8 @@ app = QApplication(sys.argv)
 mainwindow = Mainscreen()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
-widget.setFixedWidth(500)
-widget.setFixedHeight(500)
+#widget.setFixedWidth(500)
+#widget.setFixedHeight(500)
 widget.show()
 
 app.exec()
