@@ -11,8 +11,8 @@ class Mainscreen(QDialog):
         self.continuebutton.clicked.connect(self.gotologin)
 
     def gotologin(self):
-        mainscreen = Login()
-        widget.addWidget(mainscreen)
+        nextscreen = Login()
+        widget.addWidget(nextscreen)
         widget.setCurrentIndex(widget.currentIndex()+1)        
 
 class Login(QDialog):
@@ -41,6 +41,7 @@ class CreateAcc(QDialog):
         super(CreateAcc, self).__init__()
         loadUi("createacc.ui",self)
         self.submitbutton.clicked.connect(self.createaccfunction)
+        self.returnbutton.clicked.connect(self.returnfunction)
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.confirmpass.setEchoMode(QtWidgets.QLineEdit.Password)
 
@@ -55,6 +56,12 @@ class CreateAcc(QDialog):
             widget.setCurrentIndex(widget.currentIndex()+1)
 
         password = self.password.text()
+
+    def returnfunction(self):
+        login = Login()
+        widget.addWidget(login)
+        widget.setCurrentIndex(widget.currentIndex()+1)  
+
 
 
 
