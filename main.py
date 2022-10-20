@@ -3,6 +3,18 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.uic import loadUi
 
+
+class Mainscreen(QDialog):
+    def __init__(self):
+        super(Mainscreen,self).__init__()
+        loadUi("mainscreen.ui",self)
+        self.continuebutton.clicked.connect(self.gotologin)
+
+    def gotologin(self):
+        mainscreen = Login()
+        widget.addWidget(mainscreen)
+        widget.setCurrentIndex(widget.currentIndex()+1)        
+
 class Login(QDialog):
     def __init__(self):
         super(Login,self). __init__()
@@ -48,7 +60,7 @@ class CreateAcc(QDialog):
 
 
 app = QApplication(sys.argv)
-mainwindow = Login()
+mainwindow = Mainscreen()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
 widget.setFixedWidth(500)
