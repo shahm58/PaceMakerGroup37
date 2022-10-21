@@ -26,10 +26,14 @@ class Login(QDialog):
         loadUi("login.ui",self)      
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.loginbutton.clicked.connect(self.loginfunction)
-        #self.loginbutton.clicked.connect(self.gotodash)
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
         self.createaccbutton.clicked.connect(self.gotocreate)
+        self.invalid_error.setVisible(False)
+        #self.passw_error.setVisible(False)
+
+        
+
         
 
 
@@ -54,20 +58,24 @@ class Login(QDialog):
                 if data[username]:
                     try:
                         if password == data[username]:
-                            print("Login sucsess")
+                            print("Login sucsess") 
                             print("Hi", username)
                             self.gotodash()
                         else:
-                            print("Invalid credentials")
+                            print("Invalid credentials") 
+                            self.invalid_error.setVisible(True)
 
                     except:
-                        print("Invalid credentials")
+                        print("Invalid credentials") 
+                        self.invalid_error.setVisible(True)
                 
                 else:
-                    print("User does not exist")
+                    print("User does not exist") 
+                    self.invalid_error.setVisible(True)
 
             except:
-                print("login error")
+                print("login error") 
+                self.invalid_error.setVisible(True)
 
         
         
@@ -95,6 +103,7 @@ class CreateAcc(QDialog):
         self.confirmpass.setEchoMode(QtWidgets.QLineEdit.Password)
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
+        
 
     def createaccfunction(self):
        
@@ -117,13 +126,14 @@ class CreateAcc(QDialog):
 
             if password != confirm_pass:
                 print("Passwords do not match")
+                
             elif username in user_store:
                     print("User already exists, choose another")
                     #self.createaccfunction() HELP HEEEEEEEEEEEEEEEEEEEEEEEEEERE
             else:
                 db = open("database.txt", "a")
-                db.write(username +", "+ password+"\n")
-                print("Success")
+                db.write(username+", "+ password+"\n")
+                print("Success") #self.message.setVisible(True)
 
 
 
@@ -138,6 +148,7 @@ class CreateAcc(QDialog):
             login=Login()
             widget.addWidget(login)
             widget.setCurrentIndex(widget.currentIndex()+1)
+            
 
         
 
@@ -145,6 +156,7 @@ class CreateAcc(QDialog):
         login = Login()
         widget.addWidget(login)
         widget.setCurrentIndex(widget.currentIndex()+1)  
+        
 
 class Dash(QDialog):
     def __init__(self):
@@ -160,24 +172,8 @@ class Dash(QDialog):
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
         widget.addWidget(logout)
-        print ("Account Logged Out")
+        print ("Account Logged Out") #self.message.setVisible(True)
         widget.setCurrentIndex(widget.currentIndex()+1) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -185,8 +181,6 @@ app = QApplication(sys.argv)
 mainwindow = Mainscreen()
 widget = QtWidgets.QStackedWidget()
 widget.addWidget(mainwindow)
-#widget.setFixedWidth(500)
-#widget.setFixedHeight(500)
 widget.show()
 
 app.exec()

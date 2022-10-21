@@ -66,6 +66,7 @@ background-color:none;</string>
    </property>
    <property name="font">
     <font>
+     <family>Franklin Gothic Book</family>
      <pointsize>15</pointsize>
     </font>
    </property>
