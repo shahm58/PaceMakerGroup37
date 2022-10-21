@@ -113,7 +113,9 @@ font-size: 15pt;
    </property>
    <property name="styleSheet">
     <string notr="true">font-size: 12pt;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border-radius: 10;
+background-color: rgb(99, 99, 99);</string>
    </property>
    <property name="text">
     <string/>
@@ -130,7 +132,9 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">font-size: 12pt;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border-radius: 10;
+background-color: rgb(99, 99, 99);</string>
    </property>
   </widget>
   <widget class="QPushButton" name="loginbutton">
@@ -149,7 +153,8 @@ color: rgb(255, 255, 255);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10;</string>
    </property>
    <property name="text">
     <string>Login</string>
@@ -195,7 +200,8 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(57, 57, 57);</string>
+background-color: rgb(57, 57, 57);
+border-radius: 10;</string>
    </property>
    <property name="text">
     <string>here</string>
