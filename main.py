@@ -4,6 +4,8 @@ from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.uic import loadUi
 
 
+
+
 class Mainscreen(QDialog):
     def __init__(self):
         super(Mainscreen,self).__init__()
@@ -21,24 +23,55 @@ class Mainscreen(QDialog):
 class Login(QDialog):
     def __init__(self):
         super(Login,self). __init__()
-        loadUi("login.ui",self)
-        #if login button is clicked and the username and password are verified, then proceed to dash board. 
-        #if the information is not verified, do not proceed to login.        
+        loadUi("login.ui",self)      
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.loginbutton.clicked.connect(self.loginfunction)
-        self.loginbutton.clicked.connect(self.gotodash)
+        #self.loginbutton.clicked.connect(self.gotodash)
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
-
-
         self.createaccbutton.clicked.connect(self.gotocreate)
         
 
 
     def loginfunction(self):
+        db = open("database.txt", "r")
         username = self.username.text()
         password = self.password.text()
-        print("Successfully logged in with username: ", username, "and password:", password)
+
+        if not len(username or password) < 1:
+            user_store = []
+            passw_store = []
+
+            for i in db:
+                user,passw = i.split(",")
+                passw = passw.strip()
+                user_store.append(user)
+                passw_store.append(passw)
+
+            data = dict(zip(user_store,passw_store))
+
+            try:
+                if data[username]:
+                    try:
+                        if password == data[username]:
+                            print("Login sucsess")
+                            print("Hi", username)
+                            self.gotodash()
+                        else:
+                            print("Invalid credentials")
+
+                    except:
+                        print("Invalid credentials")
+                
+                else:
+                    print("User does not exist")
+
+            except:
+                print("login error")
+
+        
+        
+        
 
 
 
@@ -64,16 +97,49 @@ class CreateAcc(QDialog):
         widget.setFixedHeight(500)
 
     def createaccfunction(self):
+       
+        db = open("database.txt")
         username = self.username.text()
+        password = self.password.text()
+        confirm_pass = self.confirmpass.text()
 
-        if self.password.text() == self.confirmpass.text():
-            password = self.password.text()
-            print ("Successfully created account with username:", username, "and password:", password)
+        if not len(username or password) < 1:
+            user_store = []
+            passw_store = []
+
+            for i in db:
+                user,passw = i.split(",")
+                passw = passw.strip()
+                user_store.append(user)
+                passw_store.append(passw)
+
+            data = dict(zip(user_store,passw_store))
+
+            if password != confirm_pass:
+                print("Passwords do not match")
+            elif username in user_store:
+                    print("User already exists, choose another")
+                    #self.createaccfunction() HELP HEEEEEEEEEEEEEEEEEEEEEEEEEERE
+            else:
+                db = open("database.txt", "a")
+                db.write(username +", "+ password+"\n")
+                print("Success")
+
+
+
+
+
+
+
+
+        # if self.password.text() == self.confirmpass.text():
+        #     password = self.password.text()
+        #     print ("Successfully created account with username:", username, "and password:", password)
             login=Login()
             widget.addWidget(login)
             widget.setCurrentIndex(widget.currentIndex()+1)
 
-        password = self.password.text()
+        
 
     def returnfunction(self):
         login = Login()
@@ -96,6 +162,21 @@ class Dash(QDialog):
         widget.addWidget(logout)
         print ("Account Logged Out")
         widget.setCurrentIndex(widget.currentIndex()+1) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
