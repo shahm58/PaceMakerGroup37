@@ -167,6 +167,30 @@ class Dash(QDialog):
         widget.setFixedWidth(900)
         widget.setFixedHeight(600)
         self.logoutbutton.clicked.connect(self.logoutfunction)
+        self.VOObutton.clicked.connect(self.gotovoo)
+        self.AOObutton.clicked.connect(self.gotoaoo)
+        self.AAIbutton.clicked.connect(self.gotoaai)
+        self.VVIbutton.clicked.connect(self.gotovvi)
+
+    def gotovoo(self):
+        voo = VOO()
+        widget.addWidget(voo)
+        widget.setCurrentIndex(widget.currentIndex()+1)    
+
+    def gotoaoo(self):
+        aoo = AOO()
+        widget.addWidget(aoo)
+        widget.setCurrentIndex(widget.currentIndex()+1)    
+
+    def gotoaai(self):
+        aai = AAI()
+        widget.addWidget(aai)
+        widget.setCurrentIndex(widget.currentIndex()+1)    
+
+    def gotovvi(self):
+        vvi = VVI()
+        widget.addWidget(vvi)
+        widget.setCurrentIndex(widget.currentIndex()+1)    
 
 
     def logoutfunction(self):
@@ -176,6 +200,59 @@ class Dash(QDialog):
         widget.addWidget(logout)
         print ("Account Logged Out") #self.message.setVisible(True)
         widget.setCurrentIndex(widget.currentIndex()+1) 
+
+class VOO(QDialog):
+    def __init__(self):
+        super(VOO, self).__init__()
+        loadUi("VOO.ui", self)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(600)
+
+    def backfunction(self):
+        back = Dash()
+        widget.addWidget(back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+class AOO(QDialog):
+    def __init__(self):
+        super(AOO, self).__init__()
+        loadUi("AOO.ui", self)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(600)
+
+    def backfunction(self):
+        back = Dash()
+        widget.addWidget(back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+class AAI(QDialog):
+    def __init__(self):
+        super(AAI, self).__init__()
+        loadUi("AAI.ui", self)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(670)
+
+    def backfunction(self):
+        back = Dash()
+        widget.addWidget(back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+class VVI(QDialog):
+    def __init__(self):
+        super(VVI, self).__init__()
+        loadUi("VVI.ui", self)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
+        
+    def backfunction(self):
+        back = Dash()
+        widget.addWidget(back)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
 
 
 
