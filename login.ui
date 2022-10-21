@@ -179,7 +179,7 @@ border-radius: 10;</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>new userr? sign up</string>
+    <string>new user? sign up</string>
    </property>
   </widget>
   <widget class="QPushButton" name="createaccbutton">
@@ -210,9 +210,9 @@ border-radius: 10;</string>
   <widget class="QLabel" name="invalid_error">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>170</x>
      <y>400</y>
-     <width>111</width>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>

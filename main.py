@@ -30,7 +30,7 @@ class Login(QDialog):
         widget.setFixedHeight(500)
         self.createaccbutton.clicked.connect(self.gotocreate)
         self.invalid_error.setVisible(False)
-        #self.passw_error.setVisible(False)
+        
 
         
 
@@ -77,11 +77,6 @@ class Login(QDialog):
                 print("login error") 
                 self.invalid_error.setVisible(True)
 
-        
-        
-        
-
-
 
     def gotocreate(self):
         createacc = CreateAcc()
@@ -101,6 +96,10 @@ class CreateAcc(QDialog):
         self.returnbutton.clicked.connect(self.returnfunction)
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.confirmpass.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.matcherror.setVisible(False)
+        self.usererror.setVisible(False)
+        self.blankerror.setVisible(False)
+
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
         
@@ -126,36 +125,39 @@ class CreateAcc(QDialog):
 
             if password != confirm_pass:
                 print("Passwords do not match")
+                self.confirmpass.clear()
+                self.matcherror.setVisible(True)
+                return
                 
             elif username in user_store:
-                    print("User already exists, choose another")
-                    #self.createaccfunction() HELP HEEEEEEEEEEEEEEEEEEEEEEEEEERE
+                print("User already exists, choose another")
+                self.username.clear()
+                self.usererror.setVisible(True)
+                return
+            
+            elif username == "" or password =="" or confirm_pass == "":
+                print("Cannot leave blank fields")
+                self.username.clear()
+                self.password.clear()
+                self.confirmpass.clear()
+                self.blankerror.setVisible(True)
+                return
+
+            
             else:
                 db = open("database.txt", "a")
                 db.write(username+", "+ password+"\n")
-                print("Success") #self.message.setVisible(True)
+                print("Success")
 
-
-
-
-
-
-
-
-        # if self.password.text() == self.confirmpass.text():
-        #     password = self.password.text()
-        #     print ("Successfully created account with username:", username, "and password:", password)
             login=Login()
             widget.addWidget(login)
             widget.setCurrentIndex(widget.currentIndex()+1)
-            
-
-        
-
+                    
     def returnfunction(self):
         login = Login()
         widget.addWidget(login)
-        widget.setCurrentIndex(widget.currentIndex()+1)  
+        widget.setCurrentIndex(widget.currentIndex()+1)
+          
         
 
 class Dash(QDialog):
