@@ -102,7 +102,8 @@ border-radius: 10;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-border-radius: 10;</string>
+border-radius: 10;
+</string>
    </property>
    <property name="text">
     <string>VOO</string>
@@ -305,7 +306,7 @@ color: rgb(255, 0, 0)
      <x>540</x>
      <y>120</y>
      <width>341</width>
-     <height>391</height>
+     <height>201</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -336,6 +337,140 @@ border-radius: 10;</string>
     <string>LOGOUT</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="serialverifybutton">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>450</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string>VERIFY</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="username_2">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>400</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 12pt;
+background-color: rgb(57, 57, 57);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QGraphicsView" name="graphicsView_5">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>340</y>
+     <width>341</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(99, 99, 99);
+border-radius: 10;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>340</y>
+     <width>231</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: none;</string>
+   </property>
+   <property name="text">
+    <string> PACEMAKER SERIAL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>130</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: none;</string>
+   </property>
+   <property name="text">
+    <string>LOGIN HISTORY</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>180</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: none;</string>
+   </property>
+   <property name="text">
+    <string>Feature currently unavailable</string>
+   </property>
+  </widget>
+  <zorder>graphicsView_5</zorder>
   <zorder>graphicsView_2</zorder>
   <zorder>graphicsView</zorder>
   <zorder>label</zorder>
@@ -350,7 +485,14 @@ border-radius: 10;</string>
   <zorder>label_5</zorder>
   <zorder>graphicsView_4</zorder>
   <zorder>logoutbutton</zorder>
+  <zorder>serialverifybutton</zorder>
+  <zorder>username_2</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_8</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="heart.qrc"/>
+ </resources>
  <connections/>
 </ui>

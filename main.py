@@ -2,6 +2,7 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.uic import loadUi
+ 
 
 
 
@@ -99,6 +100,7 @@ class CreateAcc(QDialog):
         self.matcherror.setVisible(False)
         self.usererror.setVisible(False)
         self.blankerror.setVisible(False)
+        self.maxerror.setVisible(False)
 
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
@@ -145,9 +147,22 @@ class CreateAcc(QDialog):
 
             
             else:
-                db = open("database.txt", "a")
-                db.write(username+", "+ password+"\n")
-                print("Success")
+                db = open("database.txt", "r")
+                read_db = db.readlines()
+                db.close()
+                if len(read_db) < 10:
+                    db = open("database.txt", "a")
+                    db.write(username+", "+ password+"\n")
+                    print("Success")
+                    db.close()
+                else:
+                    print("User Limit Reached")
+                    self.username.clear()
+                    self.password.clear()
+                    self.confirmpass.clear()
+                    self.maxerror.setVisible(True)
+                    return
+
 
             login=Login()
             widget.addWidget(login)
@@ -171,6 +186,8 @@ class Dash(QDialog):
         self.AOObutton.clicked.connect(self.gotoaoo)
         self.AAIbutton.clicked.connect(self.gotoaai)
         self.VVIbutton.clicked.connect(self.gotovvi)
+        
+
 
     def gotovoo(self):
         voo = VOO()
