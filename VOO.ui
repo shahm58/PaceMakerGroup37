@@ -69,7 +69,7 @@ background-color: none;</string>
     <string>VOO</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input">
+  <widget class="QLineEdit" name="LRL">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -324,13 +324,58 @@ border-radius: 10;</string>
     <string>BACK</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="submitbutton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>530</y>
+     <width>321</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string>SUBMIT</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="INVALID">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>530</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>Invalid Input</string>
+   </property>
+  </widget>
   <zorder>graphicsView_5</zorder>
   <zorder>graphicsView_7</zorder>
   <zorder>graphicsView_6</zorder>
   <zorder>graphicsView_4</zorder>
   <zorder>graphicsView_2</zorder>
   <zorder>label</zorder>
-  <zorder>input</zorder>
+  <zorder>LRL</zorder>
   <zorder>label_2</zorder>
   <zorder>input_2</zorder>
   <zorder>label_3</zorder>
@@ -339,6 +384,8 @@ border-radius: 10;</string>
   <zorder>input_3</zorder>
   <zorder>label_5</zorder>
   <zorder>backbutton</zorder>
+  <zorder>submitbutton</zorder>
+  <zorder>INVALID</zorder>
  </widget>
  <resources/>
  <connections/>

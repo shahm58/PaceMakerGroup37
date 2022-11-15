@@ -222,9 +222,25 @@ class VOO(QDialog):
     def __init__(self):
         super(VOO, self).__init__()
         loadUi("VOO.ui", self)
+        self.submitbutton.clicked.connect(self.inputfunction)
         self.backbutton.clicked.connect(self.backfunction)
+        self.INVALID.setVisible(False)
         widget.setFixedWidth(900)
         widget.setFixedHeight(600)
+
+        
+    def inputfunction(self):
+        VOOLRL = self.LRL.text()
+        if ((float(VOOLRL)) > 0):
+            self.INVALID.setVisible(False)
+            db = open("VOOLRL.txt", "a")
+            db.write(VOOLRL)
+            print("Success")
+            db.close()
+
+        else: 
+            self.INVALID.setVisible(True)    
+            
 
     def backfunction(self):
         back = Dash()
