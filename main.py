@@ -235,7 +235,7 @@ class VOO(QDialog):
             self.INVALID.setVisible(False)
             db = open("VOOLRL.txt", "a")
             db.write(VOOLRL)
-            print("Success")
+            print("Success!!")
             db.close()
 
         else: 
