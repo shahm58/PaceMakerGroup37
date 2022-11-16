@@ -127,7 +127,7 @@ background-color: none;
     <string>Lower Rate Limit</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_2">
+  <widget class="QLineEdit" name="UPLIMIT">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -185,7 +185,7 @@ background-color: none;
     <string>Upper Rate Limit</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_4">
+  <widget class="QLineEdit" name="VPW">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -243,7 +243,7 @@ background-color: none;
     <string>Ventricular Pulse Width</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_3">
+  <widget class="QLineEdit" name="VA">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -377,11 +377,11 @@ border-radius: 10;</string>
   <zorder>label</zorder>
   <zorder>LRL</zorder>
   <zorder>label_2</zorder>
-  <zorder>input_2</zorder>
+  <zorder>UPLIMIT</zorder>
   <zorder>label_3</zorder>
-  <zorder>input_4</zorder>
+  <zorder>VPW</zorder>
   <zorder>label_4</zorder>
-  <zorder>input_3</zorder>
+  <zorder>VA</zorder>
   <zorder>label_5</zorder>
   <zorder>backbutton</zorder>
   <zorder>submitbutton</zorder>

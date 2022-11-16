@@ -1,11 +1,10 @@
 import sys
+
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
- 
-
-
-
+from numpy import loadtxt
+from PyQt5.QtWidgets import QLabel
 
 class Mainscreen(QDialog):
     def __init__(self):
@@ -192,7 +191,29 @@ class Dash(QDialog):
     def gotovoo(self):
         voo = VOO()
         widget.addWidget(voo)
-        widget.setCurrentIndex(widget.currentIndex()+1)    
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        try:
+            #voo.UPLIMIT = QLabel(self)
+            # load the numbers from the textfile as an array
+            data = loadtxt('VOOLRL.txt', dtype = 'int')
+            # printing the array just to check if the values are being sent to the text file
+            print(data)
+            print(data[0])
+            print(data[1])
+            print(self.UPLIMIT)
+            print(voo.UPLIMIT)
+            # self.UPLIMIT.setText(data(0))
+            # send the first value of data array to upper limit box
+            voo.UPLIMIT.setText(str(data[0]))
+         
+            
+            
+
+        except:
+            #if nothing is in the textfile give the value of 0
+            voo.UPLIMIT.setText(str(0))
+            voo.LRL.setText(str(0))
+            
 
     def gotoaoo(self):
         aoo = AOO()
@@ -224,29 +245,86 @@ class VOO(QDialog):
         loadUi("VOO.ui", self)
         self.submitbutton.clicked.connect(self.inputfunction)
         self.backbutton.clicked.connect(self.backfunction)
+        
+        
         self.INVALID.setVisible(False)
         widget.setFixedWidth(900)
         widget.setFixedHeight(600)
 
-        
+ 
+
+
+    # def inputfunction(self):
+    #     VOOLRL = self.LRL.text()
+    #     VOOUP = self.UPLIMIT.text()
+    #     if ((float(VOOLRL)) >= 30 and float(VOOLRL) % 5 == 0):
+    #         if((float(VOOLRL)) <= 49 and float(VOOLRL) % 5 == 0):
+    #             if((float(VOOLRL)) >= 50 and float(VOOLRL) % 1 == 0):
+    #                 if( (float(VOOLRL)) <=175 and float(VOOLRL) % 1 == 0):
+    #                     if( (float(VOOUP)) >=50 and float(VOOUP) % 1 == 0):
+    #                         if( (float(VOOUP)) <=175 and float(VOOUP) % 1 == 0):
+    #                             self.INVALID.setVisible(False)
+    #                             db = open("VOOLRL.txt", "a")
+    #                             db.write(VOOLRL + ",")
+    #                             print("Success")
+    #                             db.close()
+                       
+    #                         else: 
+    #                             self.INVALID.setVisible(True)
+    #                     else: 
+    #                         self.INVALID.setVisible(True)
+    #                 else: 
+    #                     self.INVALID.setVisible(True)
+    #             else: 
+    #                 self.INVALID.setVisible(True)
+    #         else: 
+    #             self.INVALID.setVisible(True)
+    #     else: 
+    #         self.INVALID.setVisible(True)  
+    #function to handel the ranges for modes                      
     def inputfunction(self):
         VOOLRL = self.LRL.text()
-        if ((float(VOOLRL)) > 0):
-            self.INVALID.setVisible(False)
-            db = open("VOOLRL.txt", "a")
-            db.write(VOOLRL)
-            print("Success")
-            db.close()
+        VOOUP = self.UPLIMIT.text()
+        VOOVPW = self.VPW.text()
+        try:
+            # ranges for the voo. If range is not met then show invalid error
+            if ((((float(VOOLRL)) >= 30) and ((float(VOOLRL)) <= 49) and (float(VOOLRL) % 5 == 0))) or ((((float(VOOLRL)) >= 50) and ((float(VOOLRL)) <= 90) and (float(VOOLRL) % 1 == 0))) or ((((float(VOOLRL)) >= 91) and ((float(VOOLRL)) <= 175) and (float(VOOLRL) % 5 == 0))):
+                if(((float(VOOUP)) >= 50) and (float(VOOUP)) <=175) and (float(VOOUP) % 5 == 0):
+                    if((((float(VOOVPW)) >= 0.5) and (float(VOOVPW)) <=3.2) and (10*(float(VOOVPW)) % 1 == 0))  or (((float(VOOVPW)) >= 3.5) and ((float(VOOVPW)) <=7) and(10*(float(VOOVPW)) % 5 ==0)):
+                       
+                        self.INVALID.setVisible(False)
+                        # open to the file and write the inputed numbers              
+                        db = open("VOOLRL.txt", "a")
+                        db.write(VOOLRL + "\n")
+                        db.write(VOOUP + "\n")
+                        db.write(VOOVPW + "\n")
+                        print("Success")
+                        db.close()
 
-        else: 
-            self.INVALID.setVisible(True)    
-            
+                        # arr = []
+                        # arr.append(int(VOOLRL))
+                        # arr.append(int(VOOUP))
+                        # arr.append(int(VOOVPW))
+                        # print(arr)
+                    else: 
+                        self.INVALID.setVisible(True)
+                else: 
+                    self.INVALID.setVisible(True)
+            else: 
+                self.INVALID.setVisible(True)
+        except: 
+            self.INVALID.setVisible(True)
+                
+              
+    
+       
 
+   
     def backfunction(self):
         back = Dash()
         widget.addWidget(back)
         widget.setCurrentIndex(widget.currentIndex()+1)
-
+        
 class AOO(QDialog):
     def __init__(self):
         super(AOO, self).__init__()

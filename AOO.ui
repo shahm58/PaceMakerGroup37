@@ -43,7 +43,7 @@ border: none;
 </string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input">
+  <widget class="QLineEdit" name="LRL">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -263,7 +263,7 @@ background-color: none;
     <string>Atrial Amplitude</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_2">
+  <widget class="QLineEdit" name="testing">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -328,7 +328,7 @@ background-color: rgb(57, 57, 57)</string>
   <zorder>graphicsView_5</zorder>
   <zorder>graphicsView_6</zorder>
   <zorder>graphicsView_2</zorder>
-  <zorder>input</zorder>
+  <zorder>LRL</zorder>
   <zorder>input_4</zorder>
   <zorder>graphicsView_7</zorder>
   <zorder>label</zorder>
@@ -336,7 +336,7 @@ background-color: rgb(57, 57, 57)</string>
   <zorder>label_3</zorder>
   <zorder>label_2</zorder>
   <zorder>label_5</zorder>
-  <zorder>input_2</zorder>
+  <zorder>testing</zorder>
   <zorder>backbutton</zorder>
   <zorder>input_3</zorder>
  </widget>
