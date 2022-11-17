@@ -320,7 +320,7 @@ password:</string>
     <rect>
      <x>140</x>
      <y>460</y>
-     <width>201</width>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -335,6 +335,28 @@ password:</string>
    </property>
    <property name="text">
     <string>Maximum 10 Users Reached!</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="maxerror_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>350</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>',' is not valid</string>
    </property>
   </widget>
  </widget>

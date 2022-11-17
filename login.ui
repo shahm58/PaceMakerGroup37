@@ -229,6 +229,28 @@ border-radius: 10;</string>
     <string>Invalid Credentials!</string>
    </property>
   </widget>
+  <widget class="QLabel" name="maxerror_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>330</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>',' is not valid</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

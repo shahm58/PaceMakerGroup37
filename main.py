@@ -30,10 +30,7 @@ class Login(QDialog):
         widget.setFixedHeight(500)
         self.createaccbutton.clicked.connect(self.gotocreate)
         self.invalid_error.setVisible(False)
-        
-
-        
-
+        self.maxerror_2.setVisible(False)
         
 
 
@@ -41,16 +38,22 @@ class Login(QDialog):
         db = open("database.txt", "r")
         username = self.username.text()
         password = self.password.text()
-
+        
         if not len(username or password) < 1:
             user_store = []
             passw_store = []
 
             for i in db:
-                user,passw = i.split(",")
-                passw = passw.strip()
-                user_store.append(user)
-                passw_store.append(passw)
+                try:
+                    user,passw = i.split(",")
+                    passw = passw.strip()
+                    user_store.append(user)
+                    passw_store.append(passw)
+                    self.maxerror_2.setVisible(False)
+                except:
+                    self.maxerror_2.setVisible(True)
+                    
+
 
             data = dict(zip(user_store,passw_store))
 
@@ -92,7 +95,8 @@ class CreateAcc(QDialog):
     def __init__(self):
         super(CreateAcc, self).__init__()
         loadUi("createacc.ui",self)
-        self.submitbutton.clicked.connect(self.createaccfunction)
+        self.submitbutton.clicked.connect(self.validateUser)
+        #self.submitbutton.clicked.connect(self.createaccfunction)
         self.returnbutton.clicked.connect(self.returnfunction)
         self.password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.confirmpass.setEchoMode(QtWidgets.QLineEdit.Password)
@@ -100,7 +104,7 @@ class CreateAcc(QDialog):
         self.usererror.setVisible(False)
         self.blankerror.setVisible(False)
         self.maxerror.setVisible(False)
-
+        self.maxerror_2.setVisible(False)
         widget.setFixedWidth(500)
         widget.setFixedHeight(500)
         
@@ -116,11 +120,20 @@ class CreateAcc(QDialog):
             user_store = []
             passw_store = []
 
-            for i in db:
-                user,passw = i.split(",")
-                passw = passw.strip()
-                user_store.append(user)
-                passw_store.append(passw)
+            try:
+                for i in db:
+                    user,passw = i.split(",")
+                    passw = passw.strip()
+                    user_store.append(user)
+                    passw_store.append(passw)
+
+                    # if "," in user_store[0] or "," in passw_store:
+                    #     db.truncate(user_store)
+                    #     db.truncate(passw_store)
+                   
+            except:
+                self.maxerror_2.setVisible(True)
+
 
             data = dict(zip(user_store,passw_store))
 
@@ -171,8 +184,86 @@ class CreateAcc(QDialog):
         login = Login()
         widget.addWidget(login)
         widget.setCurrentIndex(widget.currentIndex()+1)
-          
-        
+    # this is to choose what characters are not valid to put. If comma is put then account wont be created. 
+    def validateUser(self):
+        username = self.username.text()
+        password = self.password.text()
+
+        invalid = [","]
+
+        if any(substring in username for substring in invalid):
+            print("Invalid username")
+            self.maxerror_2.setVisible(True)
+
+        else:
+            db = open("database.txt")
+            username = self.username.text()
+            password = self.password.text()
+            confirm_pass = self.confirmpass.text()
+
+            if not len(username or password) < 1:
+                user_store = []
+                passw_store = []
+
+                try:
+                    for i in db:
+                        user,passw = i.split(",")
+                        passw = passw.strip()
+                        user_store.append(user)
+                        passw_store.append(passw)
+
+                        # if "," in user_store[0] or "," in passw_store:
+                        #     db.truncate(user_store)
+                        #     db.truncate(passw_store)
+                    
+                except:
+                    self.maxerror_2.setVisible(True)
+
+
+                data = dict(zip(user_store,passw_store))
+
+                if password != confirm_pass:
+                    print("Passwords do not match")
+                    self.confirmpass.clear()
+                    self.matcherror.setVisible(True)
+                    return
+                    
+                elif username in user_store:
+                    print("User already exists, choose another")
+                    self.username.clear()
+                    self.usererror.setVisible(True)
+                    return
+                
+                elif username == "" or password =="" or confirm_pass == "":
+                    print("Cannot leave blank fields")
+                    self.username.clear()
+                    self.password.clear()
+                    self.confirmpass.clear()
+                    self.blankerror.setVisible(True)
+                    return
+
+                
+                else:
+                    db = open("database.txt", "r")
+                    read_db = db.readlines()
+                    db.close()
+                    if len(read_db) < 10:
+                        db = open("database.txt", "a")
+                        db.write(username+", "+ password+"\n")
+                        print("Success")
+                        db.close()
+                    else:
+                        print("User Limit Reached")
+                        self.username.clear()
+                        self.password.clear()
+                        self.confirmpass.clear()
+                        self.maxerror.setVisible(True)
+                        return
+
+
+                login=Login()
+                widget.addWidget(login)
+                widget.setCurrentIndex(widget.currentIndex()+1)
 
 class Dash(QDialog):
     def __init__(self):
@@ -195,16 +286,16 @@ class Dash(QDialog):
         try:
             #voo.UPLIMIT = QLabel(self)
             # load the numbers from the textfile as an array
-            data = loadtxt('VOOLRL.txt', dtype = 'int')
+            datas = loadtxt('VOOLRL.txt', dtype = 'int')
             # printing the array just to check if the values are being sent to the text file
-            print(data)
-            print(data[0])
-            print(data[1])
+            print(datas)
+            print(datas[0])
+            print(datas[1])
             print(self.UPLIMIT)
             print(voo.UPLIMIT)
             # self.UPLIMIT.setText(data(0))
             # send the first value of data array to upper limit box
-            voo.UPLIMIT.setText(str(data[0]))
+            voo.UPLIMIT.setText(str(datas[0]))
          
             
             
