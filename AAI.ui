@@ -185,7 +185,7 @@ border-radius: 10;</string>
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_3">
+  <widget class="QLineEdit" name="AAIAA">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -241,7 +241,7 @@ border-radius: 10;</string>
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_4">
+  <widget class="QLineEdit" name="AAIAPW">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -260,7 +260,7 @@ background-color: rgb(57, 57, 57)</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input">
+  <widget class="QLineEdit" name="AAILRL">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -305,7 +305,7 @@ background-color: none;</string>
     <string>AAI</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_2">
+  <widget class="QLineEdit" name="AAIURL">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -324,7 +324,7 @@ background-color: rgb(57, 57, 57)</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_5">
+  <widget class="QLineEdit" name="AAIAS">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -382,7 +382,7 @@ background-color: none;
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_6">
+  <widget class="QLineEdit" name="AAIARP">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -440,7 +440,7 @@ background-color: none;
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_7">
+  <widget class="QLineEdit" name="AAIPVARP">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -498,7 +498,7 @@ background-color: none;
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_8">
+  <widget class="QLineEdit" name="AIIH">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -556,7 +556,7 @@ background-color: none;
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_9">
+  <widget class="QLineEdit" name="AAIRS">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -614,6 +614,51 @@ background-color: none;
 border-radius: 10;</string>
    </property>
   </widget>
+  <widget class="QLabel" name="INVALID">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>620</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>Invalid Input</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AAIsubmit">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>600</y>
+     <width>321</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string>SUBMIT</string>
+   </property>
+  </widget>
   <zorder>graphicsView_12</zorder>
   <zorder>graphicsView_11</zorder>
   <zorder>graphicsView_10</zorder>
@@ -628,22 +673,24 @@ border-radius: 10;</string>
   <zorder>label_4</zorder>
   <zorder>label_3</zorder>
   <zorder>label_5</zorder>
-  <zorder>input_3</zorder>
+  <zorder>AAIAA</zorder>
   <zorder>backbutton</zorder>
-  <zorder>input_4</zorder>
-  <zorder>input</zorder>
+  <zorder>AAIAPW</zorder>
+  <zorder>AAILRL</zorder>
   <zorder>label</zorder>
-  <zorder>input_2</zorder>
-  <zorder>input_5</zorder>
+  <zorder>AAIURL</zorder>
+  <zorder>AAIAS</zorder>
   <zorder>label_6</zorder>
-  <zorder>input_6</zorder>
+  <zorder>AAIARP</zorder>
   <zorder>label_7</zorder>
-  <zorder>input_7</zorder>
+  <zorder>AAIPVARP</zorder>
   <zorder>label_8</zorder>
-  <zorder>input_8</zorder>
+  <zorder>AIIH</zorder>
   <zorder>label_9</zorder>
-  <zorder>input_9</zorder>
+  <zorder>AAIRS</zorder>
   <zorder>label_10</zorder>
+  <zorder>INVALID</zorder>
+  <zorder>AAIsubmit</zorder>
  </widget>
  <resources/>
  <connections/>

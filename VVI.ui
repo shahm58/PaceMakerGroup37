@@ -56,7 +56,7 @@ border-radius: 10;</string>
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_3">
+  <widget class="QLineEdit" name="VVIVA">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -89,7 +89,7 @@ background-color: rgb(57, 57, 57)</string>
 border-radius: 10;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_4">
+  <widget class="QLineEdit" name="VVIVPW">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -123,31 +123,6 @@ border: none;
 </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>470</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Franklin Gothic Book</family>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-font-size: 15pt;
-background-color: none;
-</string>
-   </property>
-   <property name="text">
-    <string>ATR Duration</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -173,7 +148,7 @@ background-color: none;
     <string>Lower Rate Limit</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_7">
+  <widget class="QLineEdit" name="VVIH">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -192,44 +167,11 @@ background-color: rgb(57, 57, 57)</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_5">
+  <widget class="QLineEdit" name="VVIVS">
    <property name="geometry">
     <rect>
      <x>330</x>
      <y>360</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size: 12pt;
-color: rgb(255, 255, 255);
-border-radius: 10;
-background-color: rgb(57, 57, 57)</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QGraphicsView" name="graphicsView_12">
-   <property name="geometry">
-    <rect>
-     <x>600</x>
-     <y>440</y>
-     <width>271</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(99, 99, 99);
-border-radius: 10;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="input_9">
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>520</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -283,7 +225,7 @@ background-color: none;
     <string>Rate Smoothing</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input">
+  <widget class="QLineEdit" name="VVILRL">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -306,7 +248,7 @@ background-color: rgb(57, 57, 57)</string>
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>760</y>
+     <y>620</y>
      <width>321</width>
      <height>51</height>
     </rect>
@@ -439,10 +381,10 @@ background-color: none;
 </string>
    </property>
    <property name="text">
-    <string>PVARP Extension</string>
+    <string>Hysteresis</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_8">
+  <widget class="QLineEdit" name="VVIRS">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -511,7 +453,7 @@ background-color: none;
     <string>Ventricular Amplitude</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_6">
+  <widget class="QLineEdit" name="VVIVRP">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -595,7 +537,7 @@ background-color: none;</string>
     <string>VVI</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="input_2">
+  <widget class="QLineEdit" name="VVIURL">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -614,158 +556,80 @@ background-color: rgb(57, 57, 57)</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QPushButton" name="VVIsubmitbutton">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>220</x>
+     <y>620</y>
+     <width>321</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string>SUBMIT</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="INVALID">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
      <y>630</y>
-     <width>231</width>
+     <width>101</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Franklin Gothic Book</family>
-     <pointsize>15</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-font-size: 15pt;
-background-color: none;
-</string>
+    <string notr="true">color:rgb(255, 0, 0)</string>
    </property>
    <property name="text">
-    <string>ATR Fallback Duration</string>
+    <string>Invalid Input</string>
    </property>
   </widget>
-  <widget class="QGraphicsView" name="graphicsView_13">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>600</y>
-     <width>271</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(99, 99, 99);
-border-radius: 10;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="input_10">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>680</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size: 12pt;
-color: rgb(255, 255, 255);
-border-radius: 10;
-background-color: rgb(57, 57, 57)</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>630</y>
-     <width>191</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Franklin Gothic Book</family>
-     <pointsize>15</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-font-size: 15pt;
-background-color: none;
-</string>
-   </property>
-   <property name="text">
-    <string>ATR Fallback Time</string>
-   </property>
-  </widget>
-  <widget class="QGraphicsView" name="graphicsView_14">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>600</y>
-     <width>271</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(99, 99, 99);
-border-radius: 10;</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="input_11">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>680</y>
-     <width>231</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font-size: 12pt;
-color: rgb(255, 255, 255);
-border-radius: 10;
-background-color: rgb(57, 57, 57)</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <zorder>graphicsView_13</zorder>
-  <zorder>graphicsView_14</zorder>
-  <zorder>graphicsView_12</zorder>
   <zorder>graphicsView_8</zorder>
   <zorder>graphicsView_7</zorder>
   <zorder>graphicsView_11</zorder>
   <zorder>graphicsView_6</zorder>
   <zorder>graphicsView_4</zorder>
-  <zorder>input_3</zorder>
+  <zorder>VVIVA</zorder>
   <zorder>graphicsView_10</zorder>
-  <zorder>input_4</zorder>
+  <zorder>VVIVPW</zorder>
   <zorder>graphicsView_2</zorder>
-  <zorder>label_9</zorder>
   <zorder>label_2</zorder>
-  <zorder>input_7</zorder>
-  <zorder>input_5</zorder>
-  <zorder>input_9</zorder>
+  <zorder>VVIH</zorder>
+  <zorder>VVIVS</zorder>
   <zorder>graphicsView_9</zorder>
   <zorder>label_10</zorder>
-  <zorder>input</zorder>
+  <zorder>VVILRL</zorder>
   <zorder>backbutton</zorder>
   <zorder>label_7</zorder>
   <zorder>graphicsView_5</zorder>
   <zorder>label_6</zorder>
   <zorder>label_8</zorder>
-  <zorder>input_8</zorder>
+  <zorder>VVIRS</zorder>
   <zorder>label_3</zorder>
   <zorder>label_5</zorder>
-  <zorder>input_6</zorder>
+  <zorder>VVIVRP</zorder>
   <zorder>label_4</zorder>
   <zorder>label</zorder>
-  <zorder>input_2</zorder>
-  <zorder>label_11</zorder>
-  <zorder>input_10</zorder>
-  <zorder>label_12</zorder>
-  <zorder>input_11</zorder>
+  <zorder>VVIURL</zorder>
+  <zorder>VVIsubmitbutton</zorder>
+  <zorder>INVALID</zorder>
  </widget>
  <resources/>
  <connections/>
