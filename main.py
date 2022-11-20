@@ -290,24 +290,12 @@ class Dash(QDialog):
         try:
             datas = loadtxt('VOOLRL.txt', dtype = 'float')
             t = len(datas)
-            # if t >=3:
-            #     a = np.array(datas)
-            #     new_a = np.delete(a, 0)
-                # new_a = np.delete(a, 1)
-                # new_a = np.delete(a, 2)
+          
 
 
             # print(new_a)
             t = len(datas)
-            # print(t)
-        # print(type(datas))
-            
-            # np.delete(datas,0)
-
-                # printing the array just to check if the values are being sent to the text file
-        
-            # print(datas[0])
-            # print(datas[1])
+         
             a = 0
             a = datas[0]
             voo.LRL.setText(str(a))
@@ -315,10 +303,10 @@ class Dash(QDialog):
             b = datas[1]
             voo.UPLIMIT.setText(str(b))
             c = 0
-            c = datas[2]
+            c = datas[3]
             voo.VPW.setText(str(c))
             d = 0
-            d = datas[3]
+            d = datas[2]
             voo.VA.setText(str(d))
             
 
@@ -338,23 +326,6 @@ class Dash(QDialog):
         try:
             datasAOO = loadtxt('AOO.txt', dtype = 'float')
            
-            # if t >=3:
-            #     a = np.array(datas)
-            #     new_a = np.delete(a, 0)
-                # new_a = np.delete(a, 1)
-                # new_a = np.delete(a, 2)
-
-
-            # print(new_a)
-            # print(t)
-        # print(type(datas))
-            
-            # np.delete(datas,0)
-
-                # printing the array just to check if the values are being sent to the text file
-        
-            # print(datas[0])
-            # print(datas[1])
             aAOO = 0
             aAOO = datasAOO[0]
             aoo.AOOLRL.setText(str(aAOO))
@@ -414,9 +385,6 @@ class Dash(QDialog):
             hAAI = 0
             hAAI = datasAAI[8]
             aai.AAIRS.setText(str(hAAI))
-         
-        
-       
        
 
         except:
@@ -491,7 +459,15 @@ class Dash(QDialog):
         widget.setFixedHeight(500)
         widget.addWidget(logout)
         print ("Account Logged Out") #self.message.setVisible(True)
+        self.logoutbutton.clicked.connect(self.resetvalues)
         widget.setCurrentIndex(widget.currentIndex()+1) 
+
+    # reset the file once the user logs out
+        # deletefile = open("VVI.txt", 'w')
+        # deletefile.close()
+        # with open("VVI.txt", 'r+') as file:
+        #     file.truncate(0)
+
 
 class VOO(QDialog):
     def __init__(self):
@@ -516,17 +492,13 @@ class VOO(QDialog):
 
         try:
             # ranges for the voo. If range is not met then show invalid error
-            if ((((float(VOOLRL)) >= 30) and ((float(VOOLRL)) <= 49) and (float(VOOLRL) % 5 == 0))) or ((((float(VOOLRL)) >= 50) and ((float(VOOLRL)) <= 90) and (float(VOOLRL) % 1 == 0))) or ((((float(VOOLRL)) >= 91) and ((float(VOOLRL)) <= 175) and (float(VOOLRL) % 5 == 0))):
+            if ((((float(VOOLRL)) >= 30) and ((float(VOOLRL)) <= 49) and (float(VOOLRL) % 5 == 0))) or ((((float(VOOLRL)) >= 50) and ((float(VOOLRL)) <= 89) and (float(VOOLRL) % 1 == 0))) or ((((float(VOOLRL)) >= 90) and ((float(VOOLRL)) <= 175) and (float(VOOLRL) % 5 == 0))):
                 if(((float(VOOUP)) >= 50) and (float(VOOUP)) <=175) and (float(VOOUP) % 5 == 0):
                     if((((float(VA)) >= 0.5) and (float(VA)) <=3.2) and (10*(float(VA)) % 1 == 0))  or (((float(VA)) >= 3.5) and ((float(VA)) <=7) and(10*(float(VA)) % 5 ==0)):
                         if((((float(VOOVPW)) >= 0.1) and (float(VOOVPW)) <=1.9) and (10*(float(VOOVPW)) % 1 == 0)): 
-                            self.INVALID.setVisible(False)
                             # open to the file and write the inputed numbers              
                             db = open("VOOLRL.txt", "w")
-                            db.write(VOOLRL + "\n")
-                            db.write(VOOUP + "\n")
-                            db.write(VA + "\n")
-                            db.write(VOOVPW + "\n")
+                            db.write(VOOLRL + "\n" + VOOUP + "\n" +  VA + "\n"+ VOOVPW)
                             print("Success")
                             db.close()
                         else:
@@ -570,10 +542,7 @@ class AOO(QDialog):
                             self.INVALID.setVisible(False)
                             # open to the file and write the inputed numbers              
                             db = open("AOO.txt", "w")
-                            db.write( AOOLRL + "\n")
-                            db.write(AOOUP + "\n")
-                            db.write(AOOAA + "\n")
-                            db.write(AOOPW + "\n")
+                            db.write(AOOLRL + "\n" + AOOUP  + "\n" +AOOAA + "\n" + AOOPW)
                             print("Success")
                             db.close()
                         else:
@@ -627,15 +596,8 @@ class AAI(QDialog):
                                                 self.INVALID.setVisible(False)
                                                  # open to the file and write the inputed numbers              
                                                 db = open("AAI.txt", "w")
-                                                db.write(AAILRL + "\n")
-                                                db.write(AAIURL + "\n")
-                                                db.write(AAIAW + "\n")
-                                                db.write(AAIAPW + "\n")
-                                                db.write(AAIAS + "\n")
-                                                db.write(AAIARP + "\n")
-                                                db.write(AAIPVARP + "\n")
-                                                db.write(AIIH + "\n")
-                                                db.write(AAIRS + "\n")
+                                                db.write(AAILRL + "\n" + AAIURL + "\n" + AAIAW + "\n" + AAIAPW + "\n" + AAIAS + "\n" + AAIARP + "\n" + AAIPVARP + "\n" + AIIH + "\n" + AAIRS)
+                                        
                                                 print("Success")
                                                 db.close()
                         
@@ -696,20 +658,13 @@ class VVI(QDialog):
                         if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0): 
                             if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
                                 if( ((float(VVIVRP) >= 150) and ((float(VVIVRP) <= 500) and ((float(VVIVRP)) % 10 == 0)))):
-                                    if (((((float( VVIH)) >= 30) and ((float( VVIH)) <= 49) and (float(VVIH) % 5 == 0))) or ((((float(VVIH)) >= 50) and ((float( VVIH)) <= 90) and (float(VVIH) % 1 == 0))) or ((((float(VVIH)) >= 91) and ((float(VVIH)) <= 175) and (float(VVIH) % 5 == 0))) or ((float(VVIH) == 0))):   
-                                        if( ((float(VVIRS) >= 0) and ((float(VVIRS) <= 21) and ((float(VVIRS)) % 3 == 0)))):  
+                                    if (((((float(VVIH)) >= 30) and ((float(VVIH)) <= 49) and (float(VVIH) % 5 == 0))) or ((((float(VVIH)) >= 50) and ((float( VVIH)) <= 90) and (float(VVIH) % 1 == 0))) or ((((float(VVIH)) >= 91) and ((float(VVIH)) <= 175) and (float(VVIH) % 5 == 0))) or ((float(VVIH) == 0))):   
+                                        if(((float(VVIRS) >= 0) and ((float(VVIRS) <= 21) and ((float(VVIRS)) % 3 == 0)))):  
                                           
                                                 self.INVALID.setVisible(False)
                                                  # open to the file and write the inputed numbers              
                                                 db = open("VVI.txt", "w")
-                                                db.write(VVILRL + "\n")
-                                                db.write(VVIURL + "\n")
-                                                db.write(VVIVA + "\n")
-                                                db.write(VVIVPW + "\n")
-                                                db.write(VVIVS + "\n")
-                                                db.write(VVIVRP + "\n")
-                                                db.write(VVIH + "\n")
-                                                db.write(VVIRS + "\n")
+                                                db.write(VVILRL + "\n" + VVIURL + "\n" + VVIVA + "\n" + VVIVPW + "\n" + VVIVS + "\n" + VVIVRP + "\n" + VVIH + "\n" + VVIRS )
                                                 print("Success")
                                                 db.close()
                         
