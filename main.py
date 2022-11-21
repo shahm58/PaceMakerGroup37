@@ -269,13 +269,17 @@ class Dash(QDialog):
     def __init__(self):
         super(Dash, self).__init__()
         loadUi("dashboard.ui", self)
-        widget.setFixedWidth(900)
+        widget.setFixedWidth(1200)
         widget.setFixedHeight(600)
         self.logoutbutton.clicked.connect(self.logoutfunction)
         self.VOObutton.clicked.connect(self.gotovoo)
         self.AOObutton.clicked.connect(self.gotoaoo)
         self.AAIbutton.clicked.connect(self.gotoaai)
         self.VVIbutton.clicked.connect(self.gotovvi)
+        self.AOORbutton.clicked.connect(self.gotoaoor)
+        self.VOORutton.clicked.connect(self.gotovoor)
+        self.AAIRbutton.clicked.connect(self.gotoaair)
+        self.VVIRbutton.clicked.connect(self.gotovvir)
         
 
 
@@ -451,7 +455,32 @@ class Dash(QDialog):
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIH.setText(str(0)) 
-            vvi.VVIRS.setText(str(0))   
+            vvi.VVIRS.setText(str(0)) 
+
+       
+    def gotoaoor(self):
+        aoor = AOOR()
+        widget.addWidget(aoor)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    
+    def gotovoor(self):
+        voor = VOOR()
+        widget.addWidget(voor)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def gotoaair(self):
+        aair = AAIR()
+        widget.addWidget(aair)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def gotovvir(self):
+        vvir = VVIR()
+        widget.addWidget(vvir)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    
+
             
 
 
@@ -471,6 +500,9 @@ class Dash(QDialog):
             file.truncate(0)
         with open("VOOLRL.txt", 'r+') as file:
             file.truncate(0)
+
+
+    
    
 
 
@@ -702,7 +734,45 @@ class VVI(QDialog):
         widget.addWidget(back)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
+class AOOR(QDialog):
+    def __init__(self):
+        super(AOOR, self).__init__()
+        loadUi("AOOR.ui", self)
+        self.INVALID.setVisible(False)
+        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
 
+class VOOR(QDialog):
+    def __init__(self):
+        super(VOOR, self).__init__()
+        loadUi("VOOR.ui", self)
+        self.INVALID.setVisible(False)
+        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
+
+class AAIR(QDialog):
+    def __init__(self):
+        super(AAIR, self).__init__()
+        loadUi("AAIR.ui", self)
+        self.INVALID.setVisible(False)
+        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
+
+class VVIR(QDialog):
+    def __init__(self):
+        super(VVIR, self).__init__()
+        loadUi("VVIR.ui", self)
+        self.INVALID.setVisible(False)
+        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
 
 
 app = QApplication(sys.argv)
