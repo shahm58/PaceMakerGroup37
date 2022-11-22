@@ -324,7 +324,7 @@ background-color: rgb(57, 57, 57)</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="AOOsubmitbutton">
+  <widget class="QPushButton" name="AOORsubmitbutton">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -684,7 +684,7 @@ text-align: center;
   <zorder>AOOUP</zorder>
   <zorder>backbutton</zorder>
   <zorder>AOOAA</zorder>
-  <zorder>AOOsubmitbutton</zorder>
+  <zorder>AOORsubmitbutton</zorder>
   <zorder>INVALID</zorder>
   <zorder>MSR</zorder>
   <zorder>label_6</zorder>

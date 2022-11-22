@@ -7,7 +7,6 @@ from numpy import loadtxt
 # import AOO
 # good = AOO
 import numpy as np
-import math
 
 from PyQt5.QtWidgets import QLabel
 
@@ -193,9 +192,8 @@ class CreateAcc(QDialog):
 
         invalid = [","]
 
-        if any(substring in username for substring in invalid) or any(substring in password for substring in invalid):
+        if any(substring in username for substring in invalid):
             print("Invalid username")
-            print("Invalid password")
             self.maxerror_2.setVisible(True)
 
         else:
@@ -277,9 +275,9 @@ class Dash(QDialog):
         self.AAIbutton.clicked.connect(self.gotoaai)
         self.VVIbutton.clicked.connect(self.gotovvi)
         self.AOORbutton.clicked.connect(self.gotoaoor)
-        self.VOORutton.clicked.connect(self.gotovoor)
-        self.AAIRbutton.clicked.connect(self.gotoaair)
-        self.VVIRbutton.clicked.connect(self.gotovvir)
+        # self.VOORutton.clicked.connect(self.gotovoor)
+        # self.AAIRbutton.clicked.connect(self.gotoaair)
+        # self.VVIRbutton.clicked.connect(self.gotovvir)
         
 
 
@@ -294,20 +292,25 @@ class Dash(QDialog):
             #voo.UPLIMIT = QLabel(self)
             # load the numbers from the textfile as an array
         try:
-            with open('VOOLRL.txt', 'r') as file:
-                datasVOO = file.read()
-            datasVOOvalues = datasVOO.split("\n")
+            datas = loadtxt('VOOLRL.txt', dtype = 'float')
+            t = len(datas)
           
-            a = datasVOOvalues[0]
+
+
+            # print(new_a)
+            t = len(datas)
+         
+            a = 0
+            a = datas[0]
             voo.LRL.setText(str(a))
-           
-            b = datasVOOvalues[1]
+            b = 0
+            b = datas[1]
             voo.UPLIMIT.setText(str(b))
-           
-            c = datasVOOvalues[3]
+            c = 0
+            c = datas[3]
             voo.VPW.setText(str(c))
-           
-            d = datasVOOvalues[2]
+            d = 0
+            d = datas[2]
             voo.VA.setText(str(d))
             
 
@@ -325,20 +328,19 @@ class Dash(QDialog):
         widget.setCurrentIndex(widget.currentIndex()+1)  
     
         try:
-            with open('AOO.txt', 'r') as file:
-                datasAOO = file.read()
-            datasAOOvalues = datasAOO.split("\n")
+            datasAOO = loadtxt('AOO.txt', dtype = 'float')
            
-            aAOO = datasAOOvalues[0]
+            aAOO = 0
+            aAOO = datasAOO[0]
             aoo.AOOLRL.setText(str(aAOO))
-           
-            bAOO = datasAOOvalues[1]
+            bAOO = 0
+            bAOO = datasAOO[1]
             aoo.AOOUP.setText(str(bAOO))
-            
-            cAOO = datasAOOvalues[3]
+            cAOO = 0
+            cAOO = datasAOO[2]
             aoo.AOOPW.setText(str(cAOO))
-           
-            dAOO = datasAOOvalues[2]
+            dAOO = 0
+            dAOO = datasAOO[3]
             aoo.AOOAA.setText(str(dAOO))
             
 
@@ -354,39 +356,38 @@ class Dash(QDialog):
         widget.addWidget(aai)
         widget.setCurrentIndex(widget.currentIndex()+1)   
         try:
-            with open('AAI.txt', 'r') as file:
-                 datasAAI = file.read()
-            datasAAIvalues = datasAAI.split("\n")
-            
-            
-            aaAAI = datasAAIvalues[0]
+            datasAAI = loadtxt('AAI.txt', dtype = 'float')
+            aaAAI = 0
+            aaAAI = datasAAI[0]
             aai.AAILRL.setText(str(aaAAI))
-
-            
-            aAAI = datasAAIvalues[1]
+            aAAI = 0
+            aAAI = datasAAI[1]
             aai.AAIURL.setText(str(aAAI))
 
-            
-            iAAI = datasAAIvalues[2]
+            iAAI = 0
+            iAAI = datasAAI[2]
             aai.AAIAA.setText(str(iAAI))
 
-    
-            cAAI = datasAAIvalues[3]
+            # bAAI = 0
+            # bAAI = datasAAI[3]
+            # aai.AAIAW.setText(str(bAAI))
+            cAAI = 0
+            cAAI = datasAAI[3]
             aai.AAIAPW.setText(str(cAAI))
-            
-            dAAI = datasAAIvalues[4]
+            dAAI = 0
+            dAAI = datasAAI[4]
             aai.AAIAS.setText(str(dAAI))
-           
-            eAAI = datasAAIvalues[5]
+            eAAI = 0
+            eAAI = datasAAI[5]
             aai.AAIARP.setText(str(eAAI))
-           
-            fAAI = datasAAIvalues[6]
+            fAAI = 0
+            fAAI = datasAAI[6]
             aai.AAIPVARP.setText(str(fAAI))
-           
-            gAAI = datasAAIvalues[7]
+            gAAI = 0
+            gAAI = datasAAI[7]
             aai.AIIH.setText(str(gAAI))
-           
-            hAAI = datasAAIvalues[8]
+            hAAI = 0
+            hAAI = datasAAI[8]
             aai.AAIRS.setText(str(hAAI))
        
 
@@ -408,37 +409,34 @@ class Dash(QDialog):
         widget.setCurrentIndex(widget.currentIndex()+1)    
         
         try:
-            with open('VVI.txt', 'r') as file:
-                 datasVVI = file.read()
-            datasVVIvalues = datasVVI.split("\n")
-         
-       
-            aaVVI = datasVVIvalues[0]
+            datasVVI = loadtxt('VVI.txt', dtype = 'float')
+            aaVVI = 0
+            aaVVI = datasVVI[0]
             vvi.VVILRL.setText(str(aaVVI))
-         
-            aVVI = datasVVIvalues[1]
+            aVVI = 0
+            aVVI = datasVVI[1]
             vvi.VVIURL.setText(str(aVVI))
 
-            
-            iVVI = datasVVIvalues[2]
+            iVVI = 0
+            iVVI = datasVVI[2]
             vvi.VVIVA.setText(str(iVVI))
 
-         
-            cVVI = datasVVIvalues[3]
+            cVVI = 0
+            cVVI = datasVVI[3]
             vvi.VVIVPW.setText(str(cVVI))
             
-           
-            dVVI = datasVVIvalues[4]
+            dVVI = 0
+            dVVI = datasVVI[4]
             vvi.VVIVS.setText(str(dVVI))
             
-           
-            eVVI = datasVVIvalues[5]
+            eVVI = 0
+            eVVI = datasVVI[5]
             vvi.VVIVRP.setText(str(eVVI))
-           
-            fVVI = datasVVIvalues[6]
+            fVVI = 0
+            fVVI = datasVVI[6]
             vvi.VVIH.setText(str(fVVI))
-           
-            gVVI = datasVVIvalues[7]
+            gVVI = 0
+            gVVI = datasVVI[7]
             vvi.VVIRS.setText(str(gVVI))
          
             
@@ -455,33 +453,30 @@ class Dash(QDialog):
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIH.setText(str(0)) 
-            vvi.VVIRS.setText(str(0)) 
+            vvi.VVIRS.setText(str(0))
 
-       
     def gotoaoor(self):
         aoor = AOOR()
         widget.addWidget(aoor)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
     
-    def gotovoor(self):
-        voor = VOOR()
-        widget.addWidget(voor)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+    # def gotovoor(self):
+    #     voor = VOOR()
+    #     widget.addWidget(voor)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
 
-    def gotoaair(self):
-        aair = AAIR()
-        widget.addWidget(aair)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+    # def gotoaair(self):
+    #     aair = AAIR()
+    #     widget.addWidget(aair)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
 
-    def gotovvir(self):
-        vvir = VVIR()
-        widget.addWidget(vvir)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+    # def gotovvir(self):
+    #     vvir = VVIR()
+    #     widget.addWidget(vvir)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
 
-    
-
-            
+           
 
 
     def logoutfunction(self):
@@ -490,20 +485,14 @@ class Dash(QDialog):
         widget.setFixedHeight(500)
         widget.addWidget(logout)
         print ("Account Logged Out") #self.message.setVisible(True)
-       
+        self.logoutbutton.clicked.connect(self.resetvalues)
         widget.setCurrentIndex(widget.currentIndex()+1) 
-        with open("VVI.txt", 'r+') as file:
-            file.truncate(0)
-        with open("AAI.txt", 'r+') as file:
-            file.truncate(0)
-        with open("AOO.txt", 'r+') as file:
-            file.truncate(0)
-        with open("VOOLRL.txt", 'r+') as file:
-            file.truncate(0)
 
-
-    
-   
+    # reset the file once the user logs out
+        # deletefile = open("VVI.txt", 'w')
+        # deletefile.close()
+        # with open("VVI.txt", 'r+') as file:
+        #     file.truncate(0)
 
 
 class VOO(QDialog):
@@ -529,8 +518,8 @@ class VOO(QDialog):
 
         try:
             # ranges for the voo. If range is not met then show invalid error
-            if ((((int(VOOLRL)) >= 30) and ((int(VOOLRL)) <= 49) and (int(VOOLRL) % 5 == 0))) or ((((int(VOOLRL)) >= 50) and ((int(VOOLRL)) <= 89) and (int(VOOLRL) % 1 == 0))) or ((((int(VOOLRL)) >= 90) and ((int(VOOLRL)) <= 175) and (int(VOOLRL) % 5 == 0))):
-                if(((int(VOOUP)) >= 50) and (int(VOOUP)) <=175) and (int(VOOUP) % 5 == 0):
+            if ((((float(VOOLRL)) >= 30) and ((float(VOOLRL)) <= 49) and (float(VOOLRL) % 5 == 0))) or ((((float(VOOLRL)) >= 50) and ((float(VOOLRL)) <= 89) and (float(VOOLRL) % 1 == 0))) or ((((float(VOOLRL)) >= 90) and ((float(VOOLRL)) <= 175) and (float(VOOLRL) % 5 == 0))):
+                if(((float(VOOUP)) >= 50) and (float(VOOUP)) <=175) and (float(VOOUP) % 5 == 0):
                     if((((float(VA)) >= 0.5) and (float(VA)) <=3.2) and (10*(float(VA)) % 1 == 0))  or (((float(VA)) >= 3.5) and ((float(VA)) <=7) and(10*(float(VA)) % 5 ==0)):
                         if((((float(VOOVPW)) >= 0.1) and (float(VOOVPW)) <=1.9) and (10*(float(VOOVPW)) % 1 == 0)): 
                             # open to the file and write the inputed numbers              
@@ -572,8 +561,8 @@ class AOO(QDialog):
         AOOAA = self.AOOAA.text()
         try:
             # ranges for the voo. If range is not met then show invalid error
-            if ((((int(AOOLRL)) >= 30) and ((int(AOOLRL)) <= 49) and (int(AOOLRL) % 5 == 0))) or (((int((AOOLRL)) >= 50) and ((int(AOOLRL)) <= 90) and (int(AOOLRL) % 1 == 0))) or ((((int(AOOLRL)) >= 91) and ((int(AOOLRL)) <= 175) and (int(AOOLRL) % 5 == 0))):
-                if(((int(AOOUP)) >= 50) and (int(AOOUP)) <=175) and (int(AOOUP) % 5 == 0):
+            if ((((float(AOOLRL)) >= 30) and ((float(AOOLRL)) <= 49) and (float(AOOLRL) % 5 == 0))) or ((((float(AOOLRL)) >= 50) and ((float(AOOLRL)) <= 90) and (float(AOOLRL) % 1 == 0))) or ((((float(AOOLRL)) >= 91) and ((float(AOOLRL)) <= 175) and (float(AOOLRL) % 5 == 0))):
+                if(((float(AOOUP)) >= 50) and (float(AOOUP)) <=175) and (float(AOOUP) % 5 == 0):
                     if((((float(AOOAA)) >= 0.5) and (float(AOOAA)) <=3.2) and (10*(float(AOOAA)) % 1 == 0))  or (((float(AOOAA)) >= 3.5) and ((float(AOOAA)) <=7) and(10*(float(AOOAA)) % 5 ==0)):
                         if((((float(AOOPW)) >= 0.5) and (float(AOOPW)) <=3.2) and (10*(float(AOOPW)) % 1 == 0)): 
                             self.INVALID.setVisible(False)
@@ -621,15 +610,15 @@ class AAI(QDialog):
         AAIRS = self.AAIRS.text()
         try:
             # ranges for the voo. If range is not met then show invalid error
-            if ((((int(AAILRL)) >= 30) and ((int(AAILRL)) <= 49) and (int(AAILRL) % 5 == 0))) or ((((int(AAILRL)) >= 50) and ((int(AAILRL)) <= 90) and (int(AAILRL) % 1 == 0))) or ((((int(AAILRL)) >= 91) and ((int(AAILRL)) <= 175) and (int(AAILRL) % 5 == 0))):
-                if(((int(AAIURL)) >= 50) and (int(AAIURL)) <=175) and (int(AAIURL) % 5 == 0):
+            if ((((float(AAILRL)) >= 30) and ((float(AAILRL)) <= 49) and (float(AAILRL) % 5 == 0))) or ((((float(AAILRL)) >= 50) and ((float(AAILRL)) <= 90) and (float(AAILRL) % 1 == 0))) or ((((float(AAILRL)) >= 91) and ((float(AAILRL)) <= 175) and (float(AAILRL) % 5 == 0))):
+                if(((float(AAIURL)) >= 50) and (float(AAIURL)) <=175) and (float(AAIURL) % 5 == 0):
                     if((((float(AAIAW)) >= 0.5) and (float(AAIAW)) <=3.2) and (10*(float(AAIAW)) % 1 == 0))  or (((float(AAIAW)) >= 3.5) and ((float(AAIAW)) <=7) and(10*(float(AAIAW)) % 5 ==0)):
                         if((((((float(AAIAPW)) >= 0.1) and (float(AAIAPW)) <=1.9) and (10*(float(AAIAPW)) % 1 == 0) or (float(AAIAPW)) == 0.5))): 
                             if(((float(AAIAS) == 0.25 or (0.50) or (0.75))) or ((float(AAIAS) >= 0.001) and ((float(AAIAS) <= 0.01) and (10*(float(AAIAS)) % 5 == 0)))):
-                                if( ((int(AAIARP) >= 150) and ((int(AAIARP) <= 500) and ((int(AAIARP)) % 10 == 0)))):
-                                    if( ((int(AAIPVARP) >= 150) and ((int(AAIPVARP) <= 500) and ((int(AAIPVARP)) % 10 == 0)))):
-                                        if (((((int( AIIH)) >= 30) and ((int( AIIH)) <= 49) and (int( AIIH) % 5 == 0))) or ((((int( AIIH)) >= 50) and ((int( AIIH)) <= 89) and (int( AIIH) % 1 == 0))) or ((((int( AIIH)) >= 90) and ((int(AIIH)) <= 175) and (int(AIIH) % 5 == 0))) or ((int(AIIH) == 0))):   
-                                            if( ((int(AAIRS) >= 0) and ((int(AAIRS) <= 21) and ((int(AAIRS)) % 3 == 0)))):  
+                                if( ((float(AAIARP) >= 150) and ((float(AAIARP) <= 500) and ((float(AAIARP)) % 10 == 0)))):
+                                    if( ((float(AAIPVARP) >= 150) and ((float(AAIPVARP) <= 500) and ((float(AAIPVARP)) % 10 == 0)))):
+                                        if (((((float( AIIH)) >= 30) and ((float( AIIH)) <= 49) and (float( AIIH) % 5 == 0))) or ((((float( AIIH)) >= 50) and ((float( AIIH)) <= 90) and (float( AIIH) % 1 == 0))) or ((((float( AIIH)) >= 91) and ((float(AIIH)) <= 175) and (float(AIIH) % 5 == 0))) or ((float(AIIH) == 0))):   
+                                            if( ((float(AAIRS) >= 0) and ((float(AAIRS) <= 21) and ((float(AAIRS)) % 3 == 0)))):  
                                                 self.INVALID.setVisible(False)
                                                  # open to the file and write the inputed numbers              
                                                 db = open("AAI.txt", "w")
@@ -689,14 +678,14 @@ class VVI(QDialog):
         VVIRS = self.VVIRS.text()
         try:
             # ranges for the voo. If range is not met then show invalid error
-            if ((((int(VVILRL)) >= 30) and (int(VVILRL)) <= 49) and (int(VVILRL) % 5 == 0)) or ((((int(VVILRL)) >= 50) and (int(VVILRL)) <= 89) and (int(VVILRL) % 1 == 0)) or (((int((VVILRL)) >= 90) and ((int(VVILRL)) <= 175) and (int(VVILRL) % 5 == 0))):
-                if(((int(VVIURL)) >= 50) and (int( VVIURL)) <=175) and (int(VVIURL) % 5 == 0):
+            if ((((float(VVILRL)) >= 30) and ((float( VVILRL)) <= 49) and (float(VVILRL) % 5 == 0))) or ((((float(VVILRL)) >= 50) and ((float(VVILRL)) <= 90) and (float(VVILRL) % 1 == 0))) or ((((float(VVILRL)) >= 91) and ((float(VVILRL)) <= 175) and (float(VVILRL) % 5 == 0))):
+                if(((float(VVIURL)) >= 50) and (float( VVIURL)) <=175) and (float(VVIURL) % 5 == 0):
                     if((((float(VVIVA)) >= 0.5) and (float(VVIVA)) <=3.2) and (10*(float(VVIVA)) % 1 == 0))  or (((float(VVIVA)) >= 3.5) and ((float(VVIVA)) <=7) and(10*(float(VVIVA)) % 5 ==0)):
                         if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0): 
                             if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
-                                if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
-                                    if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
-                                        if(((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0)))):  
+                                if( ((float(VVIVRP) >= 150) and ((float(VVIVRP) <= 500) and ((float(VVIVRP)) % 10 == 0)))):
+                                    if (((((float(VVIH)) >= 30) and ((float(VVIH)) <= 49) and (float(VVIH) % 5 == 0))) or ((((float(VVIH)) >= 50) and ((float( VVIH)) <= 90) and (float(VVIH) % 1 == 0))) or ((((float(VVIH)) >= 91) and ((float(VVIH)) <= 175) and (float(VVIH) % 5 == 0))) or ((float(VVIH) == 0))):   
+                                        if(((float(VVIRS) >= 0) and ((float(VVIRS) <= 21) and ((float(VVIRS)) % 3 == 0)))):  
                                           
                                                 self.INVALID.setVisible(False)
                                                  # open to the file and write the inputed numbers              
@@ -739,40 +728,47 @@ class AOOR(QDialog):
         super(AOOR, self).__init__()
         loadUi("AOOR.ui", self)
         self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
+        # self.AOORsubmitbutton.clicked.connect(self.AOORinputfunction)
+        # self.backbutton.clicked.connect(self.backfunction)
         widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
+        widget.setFixedHeight(700)
 
-class VOOR(QDialog):
-    def __init__(self):
-        super(VOOR, self).__init__()
-        loadUi("VOOR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
+    # def backfunction(self):
+    # back = Dash()
+    # widget.addWidget(back)
+    # widget.setCurrentIndex(widget.currentIndex()+1)
 
-class AAIR(QDialog):
-    def __init__(self):
-        super(AAIR, self).__init__()
-        loadUi("AAIR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
+# class VOOR(QDialog):
+#     def __init__(self):
+#         super(VOOR, self).__init__()
+#         loadUi("VOOR.ui", self)
+#         self.INVALID.setVisible(False)
+#         self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction) FIX SUBMIT BUTTON NAME FOR ALL AND INPUT FUNCTION NAME
+#         self.backbutton.clicked.connect(self.backfunction)
+#         widget.setFixedWidth(900)
+#         widget.setFixedHeight(830)
+
+# class AAIR(QDialog):
+#     def __init__(self):
+#         super(AAIR, self).__init__()
+#         loadUi("AAIR.ui", self)
+#         self.INVALID.setVisible(False)
+#         self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+#         self.backbutton.clicked.connect(self.backfunction)
+#         widget.setFixedWidth(900)
+#         widget.setFixedHeight(830)
 
 class VVIR(QDialog):
     def __init__(self):
         super(VVIR, self).__init__()
         loadUi("VVIR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
+        # self.INVALID.setVisible(False)
+        # self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
+        # self.backbutton.clicked.connect(self.backfunction)
+        # widget.setFixedWidth(900)
+        # widget.setFixedHeight(830)
+
+
 
 
 app = QApplication(sys.argv)
@@ -782,4 +778,3 @@ widget.addWidget(mainwindow)
 widget.show()
 
 app.exec()
-
