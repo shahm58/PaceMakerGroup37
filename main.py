@@ -269,17 +269,13 @@ class Dash(QDialog):
     def __init__(self):
         super(Dash, self).__init__()
         loadUi("dashboard.ui", self)
-        widget.setFixedWidth(1200)
+        widget.setFixedWidth(900)
         widget.setFixedHeight(600)
         self.logoutbutton.clicked.connect(self.logoutfunction)
         self.VOObutton.clicked.connect(self.gotovoo)
         self.AOObutton.clicked.connect(self.gotoaoo)
         self.AAIbutton.clicked.connect(self.gotoaai)
         self.VVIbutton.clicked.connect(self.gotovvi)
-        self.AOORbutton.clicked.connect(self.gotoaoor)
-        self.VOORutton.clicked.connect(self.gotovoor)
-        self.AAIRbutton.clicked.connect(self.gotoaair)
-        self.VVIRbutton.clicked.connect(self.gotovvir)
         
 
 
@@ -455,32 +451,7 @@ class Dash(QDialog):
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIVRP.setText(str(0)) 
             vvi.VVIH.setText(str(0)) 
-            vvi.VVIRS.setText(str(0)) 
-
-       
-    def gotoaoor(self):
-        aoor = AOOR()
-        widget.addWidget(aoor)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-    
-    def gotovoor(self):
-        voor = VOOR()
-        widget.addWidget(voor)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-    def gotoaair(self):
-        aair = AAIR()
-        widget.addWidget(aair)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-    def gotovvir(self):
-        vvir = VVIR()
-        widget.addWidget(vvir)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-
-    
-
+            vvi.VVIRS.setText(str(0))   
             
 
 
@@ -500,9 +471,6 @@ class Dash(QDialog):
             file.truncate(0)
         with open("VOOLRL.txt", 'r+') as file:
             file.truncate(0)
-
-
-    
    
 
 
@@ -515,6 +483,7 @@ class VOO(QDialog):
         
         
         self.INVALID.setVisible(False)
+        self.SUCCESS.setVisible(False)
         widget.setFixedWidth(900)
         widget.setFixedHeight(600)
 
@@ -532,23 +501,30 @@ class VOO(QDialog):
             if ((((int(VOOLRL)) >= 30) and ((int(VOOLRL)) <= 49) and (int(VOOLRL) % 5 == 0))) or ((((int(VOOLRL)) >= 50) and ((int(VOOLRL)) <= 89) and (int(VOOLRL) % 1 == 0))) or ((((int(VOOLRL)) >= 90) and ((int(VOOLRL)) <= 175) and (int(VOOLRL) % 5 == 0))):
                 if(((int(VOOUP)) >= 50) and (int(VOOUP)) <=175) and (int(VOOUP) % 5 == 0):
                     if((((float(VA)) >= 0.5) and (float(VA)) <=3.2) and (10*(float(VA)) % 1 == 0))  or (((float(VA)) >= 3.5) and ((float(VA)) <=7) and(10*(float(VA)) % 5 ==0)):
-                        if((((float(VOOVPW)) >= 0.1) and (float(VOOVPW)) <=1.9) and (10*(float(VOOVPW)) % 1 == 0)): 
-                            # open to the file and write the inputed numbers              
+                        if(((((float(VOOVPW)) >= 0.1) and (float(VOOVPW)) <=1.9) and (10*(float(VOOVPW)) % 1 == 0)) or (((float(VOOVPW)) == 0.05))): 
+                            # open to the file and write the inputed numbers         
+                            self.INVALID.setVisible(False) 
+                            self.SUCCESS.setVisible(True)       
                             db = open("VOOLRL.txt", "w")
                             db.write(VOOLRL + "\n" + VOOUP + "\n" +  VA + "\n"+ VOOVPW)
-                            print("Success")
+                            print("Success")                      
                             db.close()
                         else:
-                          self.INVALID.setVisible(True)  
+                          self.INVALID.setVisible(True)
+                          self.SUCCESS.setVisible(False)
                         
                     else: 
                         self.INVALID.setVisible(True)
+                        self.SUCCESS.setVisible(False)
                 else: 
                     self.INVALID.setVisible(True)
+                    self.SUCCESS.setVisible(False)
             else: 
                 self.INVALID.setVisible(True)
+                self.SUCCESS.setVisible(False)
         except: 
             self.INVALID.setVisible(True)
+            self.SUCCESS.setVisible(False)
                 
              
     
@@ -562,6 +538,7 @@ class AOO(QDialog):
         super(AOO, self).__init__()
         loadUi("AOO.ui", self)
         self.INVALID.setVisible(False)
+        self.SUCCESS.setVisible(False)
         self.AOOsubmitbutton.clicked.connect(self.AOOinputfunction)
         self.backbutton.clicked.connect(self.backfunction)
  
@@ -575,24 +552,30 @@ class AOO(QDialog):
             if ((((int(AOOLRL)) >= 30) and ((int(AOOLRL)) <= 49) and (int(AOOLRL) % 5 == 0))) or (((int((AOOLRL)) >= 50) and ((int(AOOLRL)) <= 90) and (int(AOOLRL) % 1 == 0))) or ((((int(AOOLRL)) >= 91) and ((int(AOOLRL)) <= 175) and (int(AOOLRL) % 5 == 0))):
                 if(((int(AOOUP)) >= 50) and (int(AOOUP)) <=175) and (int(AOOUP) % 5 == 0):
                     if((((float(AOOAA)) >= 0.5) and (float(AOOAA)) <=3.2) and (10*(float(AOOAA)) % 1 == 0))  or (((float(AOOAA)) >= 3.5) and ((float(AOOAA)) <=7) and(10*(float(AOOAA)) % 5 ==0)):
-                        if((((float(AOOPW)) >= 0.5) and (float(AOOPW)) <=3.2) and (10*(float(AOOPW)) % 1 == 0)): 
+                        if(((((float(AOOPW)) >= 0.1) and (float(AOOPW)) <=1.9) and (10*(float(AOOPW)) % 1 == 0)) or (((float(AOOPW)) == 0.05))): 
                             self.INVALID.setVisible(False)
+                            self.SUCCESS.setVisible(True)
                             # open to the file and write the inputed numbers              
                             db = open("AOO.txt", "w")
                             db.write(AOOLRL + "\n" + AOOUP  + "\n" +AOOAA + "\n" + AOOPW)
                             print("Success")
                             db.close()
                         else:
-                            self.INVALID.setVisible(True)  
+                            self.INVALID.setVisible(True) 
+                            self.SUCCESS.setVisible(False) 
                             
                     else: 
                         self.INVALID.setVisible(True)
+                        self.SUCCESS.setVisible(False)
                 else: 
                     self.INVALID.setVisible(True)
+                    self.SUCCESS.setVisible(False)
             else: 
                 self.INVALID.setVisible(True)
+                self.SUCCESS.setVisible(False)
         except: 
-            self.INVALID.setVisible(True)  
+            self.INVALID.setVisible(True) 
+            self.SUCCESS.setVisible(False) 
 
     def backfunction(self):
         back = Dash()
@@ -605,6 +588,7 @@ class AAI(QDialog):
         loadUi("AAI.ui", self)
         self.AAIsubmit.clicked.connect(self.AAIinputfunction)
         self.INVALID.setVisible(False)
+        self.SUCCESS.setVisible(False)
         self.backbutton.clicked.connect(self.backfunction)
         widget.setFixedWidth(900)
         widget.setFixedHeight(670)
@@ -624,13 +608,14 @@ class AAI(QDialog):
             if ((((int(AAILRL)) >= 30) and ((int(AAILRL)) <= 49) and (int(AAILRL) % 5 == 0))) or ((((int(AAILRL)) >= 50) and ((int(AAILRL)) <= 90) and (int(AAILRL) % 1 == 0))) or ((((int(AAILRL)) >= 91) and ((int(AAILRL)) <= 175) and (int(AAILRL) % 5 == 0))):
                 if(((int(AAIURL)) >= 50) and (int(AAIURL)) <=175) and (int(AAIURL) % 5 == 0):
                     if((((float(AAIAW)) >= 0.5) and (float(AAIAW)) <=3.2) and (10*(float(AAIAW)) % 1 == 0))  or (((float(AAIAW)) >= 3.5) and ((float(AAIAW)) <=7) and(10*(float(AAIAW)) % 5 ==0)):
-                        if((((((float(AAIAPW)) >= 0.1) and (float(AAIAPW)) <=1.9) and (10*(float(AAIAPW)) % 1 == 0) or (float(AAIAPW)) == 0.5))): 
+                        if((((((float(AAIAPW)) >= 0.1) and (float(AAIAPW)) <=1.9) and (10*(float(AAIAPW)) % 1 == 0) or (float(AAIAPW)) == 0.05))): 
                             if(((float(AAIAS) == 0.25 or (0.50) or (0.75))) or ((float(AAIAS) >= 0.001) and ((float(AAIAS) <= 0.01) and (10*(float(AAIAS)) % 5 == 0)))):
                                 if( ((int(AAIARP) >= 150) and ((int(AAIARP) <= 500) and ((int(AAIARP)) % 10 == 0)))):
                                     if( ((int(AAIPVARP) >= 150) and ((int(AAIPVARP) <= 500) and ((int(AAIPVARP)) % 10 == 0)))):
                                         if (((((int( AIIH)) >= 30) and ((int( AIIH)) <= 49) and (int( AIIH) % 5 == 0))) or ((((int( AIIH)) >= 50) and ((int( AIIH)) <= 89) and (int( AIIH) % 1 == 0))) or ((((int( AIIH)) >= 90) and ((int(AIIH)) <= 175) and (int(AIIH) % 5 == 0))) or ((int(AIIH) == 0))):   
-                                            if( ((int(AAIRS) >= 0) and ((int(AAIRS) <= 21) and ((int(AAIRS)) % 3 == 0)))):  
+                                            if((int(AAIRS)==25) or  (((int(AAIRS) >= 0) and ((int(AAIRS) <= 21) and ((int(AAIRS)) % 3 == 0))))):  
                                                 self.INVALID.setVisible(False)
+                                                self.SUCCESS.setVisible(True)
                                                  # open to the file and write the inputed numbers              
                                                 db = open("AAI.txt", "w")
                                                 db.write(AAILRL + "\n" + AAIURL + "\n" + AAIAW + "\n" + AAIAPW + "\n" + AAIAS + "\n" + AAIARP + "\n" + AAIPVARP + "\n" + AIIH + "\n" + AAIRS)
@@ -640,28 +625,38 @@ class AAI(QDialog):
                         
                                             else:
                                                 self.INVALID.setVisible(True)
+                                                self.SUCCESS.setVisible(False)
                                         
                                         else:
                                             self.INVALID.setVisible(True)
+                                            self.SUCCESS.setVisible(False)
                                     else:
                                         self.INVALID.setVisible(True)
+                                        self.SUCCESS.setVisible(False)
                                 
                                 else: 
                                     self.INVALID.setVisible(True)        
+                                    self.SUCCESS.setVisible(False)
                             else:
                                 self.INVALID.setVisible(True)
+                                self.SUCCESS.setVisible(False)
                         
                         else:
-                             self.INVALID.setVisible(True)  
+                             self.INVALID.setVisible(True) 
+                             self.SUCCESS.setVisible(False) 
                                 
                     else: 
                         self.INVALID.setVisible(True)
+                        self.SUCCESS.setVisible(False)
                 else: 
                     self.INVALID.setVisible(True)
+                    self.SUCCESS.setVisible(False)
             else: 
                 self.INVALID.setVisible(True)
+                self.SUCCESS.setVisible(False)
         except: 
             self.INVALID.setVisible(True)  
+            self.SUCCESS.setVisible(False)
 
     def backfunction(self):
         back = Dash()
@@ -673,6 +668,7 @@ class VVI(QDialog):
         super(VVI, self).__init__()
         loadUi("VVI.ui", self)
         self.INVALID.setVisible(False)
+        self.SUCCESS.setVisible(False)
         self.VVIsubmitbutton.clicked.connect(self.VVIinputfunction)
         self.backbutton.clicked.connect(self.backfunction)
         widget.setFixedWidth(900)
@@ -692,13 +688,14 @@ class VVI(QDialog):
             if ((((int(VVILRL)) >= 30) and (int(VVILRL)) <= 49) and (int(VVILRL) % 5 == 0)) or ((((int(VVILRL)) >= 50) and (int(VVILRL)) <= 89) and (int(VVILRL) % 1 == 0)) or (((int((VVILRL)) >= 90) and ((int(VVILRL)) <= 175) and (int(VVILRL) % 5 == 0))):
                 if(((int(VVIURL)) >= 50) and (int( VVIURL)) <=175) and (int(VVIURL) % 5 == 0):
                     if((((float(VVIVA)) >= 0.5) and (float(VVIVA)) <=3.2) and (10*(float(VVIVA)) % 1 == 0))  or (((float(VVIVA)) >= 3.5) and ((float(VVIVA)) <=7) and(10*(float(VVIVA)) % 5 ==0)):
-                        if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0): 
+                        if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0.05): 
                             if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
                                 if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
                                     if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
-                                        if(((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0)))):  
+                                        if((int(VVIRS)==25) or  (((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0))))):
                                           
                                                 self.INVALID.setVisible(False)
+                                                self.SUCCESS.setVisible(True)
                                                  # open to the file and write the inputed numbers              
                                                 db = open("VVI.txt", "w")
                                                 db.write(VVILRL + "\n" + VVIURL + "\n" + VVIVA + "\n" + VVIVPW + "\n" + VVIVS + "\n" + VVIVRP + "\n" + VVIH + "\n" + VVIRS )
@@ -709,70 +706,41 @@ class VVI(QDialog):
                                         
                                         else:
                                             self.INVALID.setVisible(True)
+                                            self.SUCCESS.setVisible(False)
                                     else:
                                         self.INVALID.setVisible(True)
+                                        self.SUCCESS.setVisible(False)
                                 
                                 else: 
-                                    self.INVALID.setVisible(True)        
+                                    self.INVALID.setVisible(True)   
+                                    self.SUCCESS.setVisible(False)     
                             else:
                                 self.INVALID.setVisible(True)
+                                self.SUCCESS.setVisible(False)
                         
                         else:
-                             self.INVALID.setVisible(True)  
+                             self.INVALID.setVisible(True) 
+                             self.SUCCESS.setVisible(False) 
                                 
                     else: 
                         self.INVALID.setVisible(True)
+                        self.SUCCESS.setVisible(False)
                 else: 
                     self.INVALID.setVisible(True)
+                    self.SUCCESS.setVisible(False)
             else: 
                 self.INVALID.setVisible(True)
+                self.SUCCESS.setVisible(False)
         except: 
             self.INVALID.setVisible(True)  
+            self.SUCCESS.setVisible(False)
         
     def backfunction(self):
         back = Dash()
         widget.addWidget(back)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
-class AOOR(QDialog):
-    def __init__(self):
-        super(AOOR, self).__init__()
-        loadUi("AOOR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
 
-class VOOR(QDialog):
-    def __init__(self):
-        super(VOOR, self).__init__()
-        loadUi("VOOR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
-
-class AAIR(QDialog):
-    def __init__(self):
-        super(AAIR, self).__init__()
-        loadUi("AAIR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
-
-class VVIR(QDialog):
-    def __init__(self):
-        super(VVIR, self).__init__()
-        loadUi("VVIR.ui", self)
-        self.INVALID.setVisible(False)
-        self.VVIsubmitbutton.clicked.connect(self.AOORinputfunction)
-        self.backbutton.clicked.connect(self.backfunction)
-        widget.setFixedWidth(900)
-        widget.setFixedHeight(830)
 
 
 app = QApplication(sys.argv)
@@ -782,4 +750,3 @@ widget.addWidget(mainwindow)
 widget.show()
 
 app.exec()
-
