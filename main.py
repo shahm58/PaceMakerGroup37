@@ -692,7 +692,7 @@ class VVI(QDialog):
                             if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
                                 if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
                                     if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
-                                        if((int(VVIRS)==25) or  (((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0))))):
+                                        if((((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0))))):
                                           
                                                 self.INVALID.setVisible(False)
                                                 self.SUCCESS.setVisible(True)
