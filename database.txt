@@ -1,3 +1,7 @@
 1, 1
 
+<<<<<<< HEAD
 yo, yo
+=======
+muneeb, test1
+>>>>>>> c0137a62b78de0af1eb120f1db6b81aa598519bb
