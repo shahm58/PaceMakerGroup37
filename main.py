@@ -609,7 +609,7 @@ class AAI(QDialog):
                 if(((int(AAIURL)) >= 50) and (int(AAIURL)) <=175) and (int(AAIURL) % 5 == 0):
                     if((((float(AAIAW)) >= 0.5) and (float(AAIAW)) <=3.2) and (10*(float(AAIAW)) % 1 == 0))  or (((float(AAIAW)) >= 3.5) and ((float(AAIAW)) <=7) and(10*(float(AAIAW)) % 5 ==0)):
                         if((((((float(AAIAPW)) >= 0.1) and (float(AAIAPW)) <=1.9) and (10*(float(AAIAPW)) % 1 == 0) or (float(AAIAPW)) == 0.05))): 
-                            if(((float(AAIAS) == 0.25 or (0.50) or (0.75))) or ((float(AAIAS) >= 0.001) and ((float(AAIAS) <= 0.01) and (10*(float(AAIAS)) % 5 == 0)))):
+                            if(((float(AAIAS) == 0.25) or(float(AAIAS) == 0.50) or (float(AAIAS) == 0.75)) or(float(AAIAS) == 0.25) or ((float(AAIAS) >= 0.001)  and (float(AAIAS) <= 0.01) and (10000*float(AAIAS) % 5 == 0))):
                                 if( ((int(AAIARP) >= 150) and ((int(AAIARP) <= 500) and ((int(AAIARP)) % 10 == 0)))):
                                     if( ((int(AAIPVARP) >= 150) and ((int(AAIPVARP) <= 500) and ((int(AAIPVARP)) % 10 == 0)))):
                                         if (((((int( AIIH)) >= 30) and ((int( AIIH)) <= 49) and (int( AIIH) % 5 == 0))) or ((((int( AIIH)) >= 50) and ((int( AIIH)) <= 89) and (int( AIIH) % 1 == 0))) or ((((int( AIIH)) >= 90) and ((int(AIIH)) <= 175) and (int(AIIH) % 5 == 0))) or ((int(AIIH) == 0))):   
@@ -689,7 +689,7 @@ class VVI(QDialog):
                 if(((int(VVIURL)) >= 50) and (int( VVIURL)) <=175) and (int(VVIURL) % 5 == 0):
                     if((((float(VVIVA)) >= 0.5) and (float(VVIVA)) <=3.2) and (10*(float(VVIVA)) % 1 == 0))  or (((float(VVIVA)) >= 3.5) and ((float(VVIVA)) <=7) and(10*(float(VVIVA)) % 5 ==0)):
                         if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0.05): 
-                            if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
+                            if(((float(VVIVS) == 0.25) or(float(VVIVS) == 0.50) or (float(VVIVS) == 0.75)) or(float(VVIVS) == 0.25) or ((float(VVIVS) >= 0.001)  and (float(VVIVS) <= 0.01) and (10000*float(VVIVS) % 5 == 0)))  :
                                 if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
                                     if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
                                         if((((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0))))):
