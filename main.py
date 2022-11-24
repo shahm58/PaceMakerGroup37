@@ -767,13 +767,8 @@ class VVI(QDialog):
             if ((((int(VVILRL)) >= 30) and (int(VVILRL)) <= 49) and (int(VVILRL) % 5 == 0)) or ((((int(VVILRL)) >= 50) and (int(VVILRL)) <= 89) and (int(VVILRL) % 1 == 0)) or (((int((VVILRL)) >= 90) and ((int(VVILRL)) <= 175) and (int(VVILRL) % 5 == 0))):
                 if(((int(VVIURL)) >= 50) and (int( VVIURL)) <=175) and (int(VVIURL) % 5 == 0):
                     if((((float(VVIVA)) >= 0.5) and (float(VVIVA)) <=3.2) and (10*(float(VVIVA)) % 1 == 0))  or (((float(VVIVA)) >= 3.5) and ((float(VVIVA)) <=7) and(10*(float(VVIVA)) % 5 ==0)):
-<<<<<<< HEAD
-                        if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0): 
-                            if(((float(VVIVS) == 0.25) or(float(VVIVS) == 0.50) or (float(VVIVS) == 0.75)) or(float(VVIVS) == 0.25) or ((float(VVIVS) >= 0.001)  and (float(VVIVS) <= 0.01) and (10000*float(VVIVS) % 5 == 0)))  : 
-=======
                         if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0.05): 
                             if(((float(VVIVS) == 0.25) or(float(VVIVS) == 0.50) or (float(VVIVS) == 0.75)) or(float(VVIVS) == 0.25) or ((float(VVIVS) >= 0.001)  and (float(VVIVS) <= 0.01) and (10000*float(VVIVS) % 5 == 0)))  :
->>>>>>> 4adea42fdc03cd1610d6c7cf1d34597a5e5bf49c
                                 if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
                                     if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
                                         if((((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0))))):
