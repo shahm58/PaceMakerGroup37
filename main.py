@@ -3,14 +3,13 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
-from numpy import loadtxt
-# import AOO
-# good = AOO
 import numpy as np
-import math
+import serial
+import serial.tools.list_ports
+import struct
 
 from PyQt5.QtWidgets import QLabel
-
+frdm_port = "COM5"
 class Mainscreen(QDialog):
     def __init__(self):
         super(Mainscreen,self).__init__()
@@ -276,7 +275,26 @@ class Dash(QDialog):
         self.AOObutton.clicked.connect(self.gotoaoo)
         self.AAIbutton.clicked.connect(self.gotoaai)
         self.VVIbutton.clicked.connect(self.gotovvi)
+        self.connectbutton.clicked.connect(self.deviceconnected)
+        self.disconnected.setVisible(False)
+        # self.checks.SetVisible(False)
         
+
+    def deviceconnected(self):
+        connect_true = serial.tools.list_ports.comports()
+        try:
+            for w in connect_true:
+                if(w.device == "COM5"):
+                    frdm_port = w.device
+                    con = True
+                    # self.checks.SetVisible(True)
+                    print("connected")
+
+            return [frdm_port,con]
+        except:
+            self.disconnected.setVisible(True)
+            print("notconnected")
+            return [None, False]
 
 
     def gotovoo(self):
@@ -350,10 +368,13 @@ class Dash(QDialog):
         widget.addWidget(aai)
         widget.setCurrentIndex(widget.currentIndex()+1)   
         try:
+            # open the text file and 
             with open('AAI.txt', 'r') as file:
                  datasAAI = file.read()
+            # send file values to variable and get rid of new line 
             datasAAIvalues = datasAAI.split("\n")
             
+            # data is sent to the respective vairable 
             
             aaAAI = datasAAIvalues[0]
             aai.AAILRL.setText(str(aaAAI))
@@ -439,8 +460,6 @@ class Dash(QDialog):
          
             
         
-        
-
         except:
             #if nothing is in the textfile give the value of 0
             vvi.VVILRL.setText(str(0))
@@ -453,7 +472,66 @@ class Dash(QDialog):
             vvi.VVIH.setText(str(0)) 
             vvi.VVIRS.setText(str(0))   
             
+    def gotoaoor(self):
+        aoor = AOOR()
+        widget.addWidget(aoor)
+        widget.setCurrentIndex(widget.currentIndex()+1)
 
+        # AOORLRL = self.AOORLRL.text()
+        # AOORURL = self.AOORUP.text()
+        # AOORAA = self.AOORAAL.text()
+        # AOORMS = self.AOORPW.text()
+        # MSR = self.MSR.text()
+        # ACTIVE = self.ACTIVE.text()
+        # Reacttime = self.ReactTime.text()
+        # ReactFact = self.ReactFact.text()
+        # RecovTime = self.RecovTime.text()
+
+
+        try:
+            with open('AOOR.txt', 'r') as file:
+                datasAOOR = file.read()
+            datasAOORvalues = datasAOOR.split("\n")
+         
+            aAOOR = datasAOORvalues[0]
+            aoor.AOORLRL.setText(str(aAOOR))
+         
+            bAOOR = datasAOORvalues[1]
+            aoor.AOORURL.setText(str(bAOOR))
+
+            cAOOR = datasAOORvalues[2]
+            aoor.AOORAA.setText(str(cAOOR))
+         
+            dAOOR = datasAOORvalues[3]
+            aoor.AOORMS.setText(str(dAOOR))
+                       
+            eAOOR = datasAOORvalues[4]
+            aoor.MSR.setText(str(eAOOR))
+            
+            fAOOR = datasAOORvalues[5]
+            aoor.ACTIVE.setText(str(fAOOR))
+           
+            gAOOR = datasAOORvalues[6]
+            aoor.Reacttime.setText(str(gAOOR))
+           
+            # hAOOR = datasAOORvalues[7]
+            aoor.ReactFact.setText(str(datasAOORvalues[7]))
+            
+            iAOOR = datasAOORvalues[8]
+            aoor.RecovTime.setText(str(iAOOR))
+        
+
+        except:
+            #if nothing is in the textfile give the value of 0
+            aoor.AOORLRL.setText(str(0))
+            aoor.AOORURL.setText(str(0))
+            aoor.AOORAA.setText(str(0))
+            aoor.AOORMS.setText(str(0))
+            aoor.MSR.setText(str(0))
+            aoor.ACTIVE.setText(str(0)) 
+            aoor.Reacttime.setText(str(0)) 
+            aoor.ReactFact.setText(str(0)) 
+            aoor.RecovTime.setText(str(0)) 
 
     def logoutfunction(self):
         logout = Mainscreen()
@@ -463,6 +541,7 @@ class Dash(QDialog):
         print ("Account Logged Out") #self.message.setVisible(True)
        
         widget.setCurrentIndex(widget.currentIndex()+1) 
+        # all modes values are set to 0 when user logs out 
         with open("VVI.txt", 'r+') as file:
             file.truncate(0)
         with open("AAI.txt", 'r+') as file:
@@ -488,7 +567,7 @@ class VOO(QDialog):
 
  
 
-    #function to handel the ranges for modes                      
+    #function to handle the ranges for modes                      
     def inputfunction(self):
         VOOLRL = self.LRL.text()
         VOOUP = self.UPLIMIT.text()
@@ -593,7 +672,7 @@ class AAI(QDialog):
                 if(((int(AAIURL)) >= 50) and (int(AAIURL)) <=175) and (int(AAIURL) % 5 == 0):
                     if((((float(AAIAW)) >= 0.5) and (float(AAIAW)) <=3.2) and (10*(float(AAIAW)) % 1 == 0))  or (((float(AAIAW)) >= 3.5) and ((float(AAIAW)) <=7) and(10*(float(AAIAW)) % 5 ==0)):
                         if((((((float(AAIAPW)) >= 0.1) and (float(AAIAPW)) <=1.9) and (10*(float(AAIAPW)) % 1 == 0) or (float(AAIAPW)) == 0.5))): 
-                            if(((float(AAIAS) == 0.25 or (0.50) or (0.75))) or ((float(AAIAS) >= 0.001) and ((float(AAIAS) <= 0.01) and (10*(float(AAIAS)) % 5 == 0)))):
+                            if(((float(AAIAS) == 0.25) or(float(AAIAS) == 0.50) or (float(AAIAS) == 0.75)) or(float(AAIAS) == 0.25) or ((float(AAIAS) >= 0.001)  and (float(AAIAS) <= 0.01) and (10000*float(AAIAS) % 5 == 0)))  : 
                                 if( ((int(AAIARP) >= 150) and ((int(AAIARP) <= 500) and ((int(AAIARP)) % 10 == 0)))):
                                     if( ((int(AAIPVARP) >= 150) and ((int(AAIPVARP) <= 500) and ((int(AAIPVARP)) % 10 == 0)))):
                                         if (((((int( AIIH)) >= 30) and ((int( AIIH)) <= 49) and (int( AIIH) % 5 == 0))) or ((((int( AIIH)) >= 50) and ((int( AIIH)) <= 89) and (int( AIIH) % 1 == 0))) or ((((int( AIIH)) >= 90) and ((int(AIIH)) <= 175) and (int(AIIH) % 5 == 0))) or ((int(AIIH) == 0))):   
@@ -605,7 +684,7 @@ class AAI(QDialog):
                                         
                                                 print("Success")
                                                 db.close()
-                        
+                                            # tell the user input is invalid if all of the 'if' conditons are not satisified
                                             else:
                                                 self.INVALID.setVisible(True)
                                         
@@ -656,12 +735,12 @@ class VVI(QDialog):
         VVIH = self.VVIH.text()
         VVIRS = self.VVIRS.text()
         try:
-            # ranges for the voo. If range is not met then show invalid error
+            # ranges for the vvi. If range is not met then show invalid error
             if ((((int(VVILRL)) >= 30) and (int(VVILRL)) <= 49) and (int(VVILRL) % 5 == 0)) or ((((int(VVILRL)) >= 50) and (int(VVILRL)) <= 89) and (int(VVILRL) % 1 == 0)) or (((int((VVILRL)) >= 90) and ((int(VVILRL)) <= 175) and (int(VVILRL) % 5 == 0))):
                 if(((int(VVIURL)) >= 50) and (int( VVIURL)) <=175) and (int(VVIURL) % 5 == 0):
                     if((((float(VVIVA)) >= 0.5) and (float(VVIVA)) <=3.2) and (10*(float(VVIVA)) % 1 == 0))  or (((float(VVIVA)) >= 3.5) and ((float(VVIVA)) <=7) and(10*(float(VVIVA)) % 5 ==0)):
                         if(((((float(VVIVPW)) >= 0.1) and (float(VVIVPW)) <=1.9) and (10*(float(VVIVPW)) % 1 == 0)) or (float(VVIVPW)) == 0): 
-                            if(((float(VVIVS) == 0.25 or (0.50) or (0.75))) or ((float(VVIVS) >= 0.001) and ((float(VVIVS) <= 0.01) and (10*(float(VVIVS)) % 5 == 0)))):
+                            if(((float(VVIVS) == 0.25) or(float(VVIVS) == 0.50) or (float(VVIVS) == 0.75)) or(float(VVIVS) == 0.25) or ((float(VVIVS) >= 0.001)  and (float(VVIVS) <= 0.01) and (10000*float(VVIVS) % 5 == 0)))  : 
                                 if( ((int(VVIVRP) >= 150) and ((int(VVIVRP) <= 500) and ((int(VVIVRP)) % 10 == 0)))):
                                     if (((((int(VVIH)) >= 30) and ((int(VVIH)) <= 49) and (int(VVIH) % 5 == 0))) or ((((int(VVIH)) >= 50) and ((int( VVIH)) <= 89) and (int(VVIH) % 1 == 0))) or ((((int(VVIH)) >= 90) and ((int(VVIH)) <= 175) and (int(VVIH) % 5 == 0))) or ((int(VVIH) == 0))):   
                                         if(((int(VVIRS) >= 0) and ((int(VVIRS) <= 21) and ((int(VVIRS)) % 3 == 0)))):  
@@ -701,6 +780,71 @@ class VVI(QDialog):
         back = Dash()
         widget.addWidget(back)
         widget.setCurrentIndex(widget.currentIndex()+1)
+
+
+class AOOR(QDialog):
+    def __init__(self):
+        super(AOOR, self).__init__()
+        loadUi("AOOR.ui", self)
+        self.INVALID.setVisible(False)
+        self.AAORsubmitbutton.clicked.connect(self.AOORinputfunction)
+        self.backbutton.clicked.connect(self.backfunction)
+        widget.setFixedWidth(900)
+        widget.setFixedHeight(830)
+
+    def AOORinputfunction(self):
+        AOORLRL = self.AOORLRL.text()
+        AOORURL = self.AOORUP.text()
+        AOORAA = self.AOORAAL.text()
+        AOORMS = self.AOORPW.text()
+        MSR = self.MSR.text()
+        ACTIVE = self.ACTIVE.text()
+        Reacttime = self.ReactTime.text()
+        ReactFact = self.ReactFact.text()
+        RecovTime = self.RecovTime.text()
+    
+        try:
+            # ranges for the voo. If range is not met then show invalid error
+            if ((((int(AOORLRL)) >= 30) and (int(AOORLRL)) <= 49) and (int(AOORLRL) % 5 == 0)) or ((((int(AOORLRL)) >= 50) and (int(AOORLRL)) <= 89) and (int(AOORLRL) % 1 == 0)) or (((int((AOORLRL)) >= 90) and ((int(AOORLRL)) <= 175) and (int(AOORLRL) % 5 == 0))):
+                if(((int(AOORURL)) >= 50) and (int(AOORURL)) <=175) and (int(AOORURL) % 5 == 0):
+                    if((((float(AOORAA)) >= 0.5) and (float(AOORAA)) <=3.2) and (10*(float(AOORAA)) % 1 == 0))  or (((float(AOORAA)) >= 3.5) and ((float(AOORAA)) <=7) and(10*(float(AOORAA)) % 5 ==0)):
+                        if(((((float(AOORMS)) >= 0.1) and (float(AOORMS)) <=1.9) and (10*(float(AOORMS)) % 1 == 0)) or (float(AOORMS)) == 0.05): 
+                            if(((int(MSR)) >= 50) and (int(MSR)) <=175) and (int(MSR) % 5 == 0):   
+                                if (int(ACTIVE) >= 1) and (int(ACTIVE) <= 7):
+                                    if ((((int(Reacttime)) >= 10) and ((int(Reacttime)) <= 50) and (int(Reacttime) % 10 == 0))):
+                                        if(((int( ReactFact) >= 1) and ((int( ReactFact) <= 16) and ((int(ReactFact)) % 1 == 0)))):
+                                            if(((int(RecovTime) >= 2) and ((int(RecovTime) <= 16) and ((int(RecovTime)) % 1 == 0)))):  
+                                          
+                                                self.INVALID.setVisible(False)
+                                                 # open to the file and write the inputed numbers              
+                                                db = open("AOOR.txt", "w")
+                                                db.write(AOORLRL + "\n" +AOORURL + "\n" + AOORAA + "\n" + AOORMS + "\n" + MSR + "\n" + ACTIVE + "\n" + Reacttime + "\n" + ReactFact + "\n" + RecovTime)
+                                                print("Success")
+                                                db.close()
+                        
+                                           
+                                        
+                                        else:
+                                            self.INVALID.setVisible(True)
+                                    else:
+                                        self.INVALID.setVisible(True)
+                                
+                                else: 
+                                    self.INVALID.setVisible(True)        
+                            else:
+                                self.INVALID.setVisible(True)
+                        
+                        else:
+                             self.INVALID.setVisible(True)  
+                                
+                    else: 
+                        self.INVALID.setVisible(True)
+                else: 
+                    self.INVALID.setVisible(True)
+            else: 
+                self.INVALID.setVisible(True)
+        except: 
+            self.INVALID.setVisible(True)  
 
 
 

@@ -274,13 +274,13 @@ color: rgb(255, 255, 255);</string>
     <string>DEVICE:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="disconnected">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>520</y>
+     <x>230</x>
+     <y>530</y>
      <width>121</width>
-     <height>51</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -470,6 +470,55 @@ background-color: none;</string>
     <string>Feature currently unavailable</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="connectbutton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>560</y>
+     <width>271</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10;</string>
+   </property>
+   <property name="text">
+    <string>Connect Device</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="checks">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>520</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;
+color: rgb(255, 0, 0)
+
+</string>
+   </property>
+   <property name="text">
+    <string>CONNECTED</string>
+   </property>
+  </widget>
   <zorder>graphicsView_5</zorder>
   <zorder>graphicsView_2</zorder>
   <zorder>graphicsView</zorder>
@@ -482,7 +531,7 @@ background-color: none;</string>
   <zorder>graphicsView_3</zorder>
   <zorder>label_3</zorder>
   <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
+  <zorder>disconnected</zorder>
   <zorder>graphicsView_4</zorder>
   <zorder>logoutbutton</zorder>
   <zorder>serialverifybutton</zorder>
@@ -490,6 +539,8 @@ background-color: none;</string>
   <zorder>label_6</zorder>
   <zorder>label_7</zorder>
   <zorder>label_8</zorder>
+  <zorder>connectbutton</zorder>
+  <zorder>checks</zorder>
  </widget>
  <resources>
   <include location="heart.qrc"/>
