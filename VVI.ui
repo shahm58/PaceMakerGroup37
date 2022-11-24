@@ -582,7 +582,7 @@ border-radius: 10;</string>
   <widget class="QLabel" name="INVALID">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>60</x>
      <y>630</y>
      <width>101</width>
      <height>31</height>
@@ -599,6 +599,28 @@ border-radius: 10;</string>
    </property>
    <property name="text">
     <string>Invalid Input</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="SUCCESS">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>610</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Book</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 0, 0)</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00aa00;&quot;&gt;SUCCESS&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <zorder>graphicsView_8</zorder>
@@ -630,6 +652,7 @@ border-radius: 10;</string>
   <zorder>VVIURL</zorder>
   <zorder>VVIsubmitbutton</zorder>
   <zorder>INVALID</zorder>
+  <zorder>SUCCESS</zorder>
  </widget>
  <resources/>
  <connections/>
