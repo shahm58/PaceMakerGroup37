@@ -4,8 +4,6 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.uic import loadUi
 from numpy import loadtxt
-# import AOO
-# good = AOO
 import numpy as np
 import math
 
